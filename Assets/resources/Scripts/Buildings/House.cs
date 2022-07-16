@@ -16,10 +16,18 @@ public class House : Building
     // Update is called once per frame
     void Update()
     {
+        if (workers > 0)
+        {
+            if (mainManager.getProduction())
+            {
+                mainManager.coinCount += workers;
+            }
+        }
         if (mainManager.getProduction() && workers < maxWorkers && !famine)
         {
             workers++;
             mainManager.workerCount++;
         }
+
     }
 }

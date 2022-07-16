@@ -7,9 +7,9 @@ public class Dock : Building
     // Start is called before the first frame update
     void Start()
     {
-        lumberCost = 300;
-        coinCost = 500;
-        maxWorkers = 1;
+        lumberCost = 100;
+        coinCost = 100;
+        maxWorkers = 5;
         workers = 0;
 
     }
@@ -17,6 +17,13 @@ public class Dock : Building
     // Update is called once per frame
     void Update()
     {
-
+        if (workers > 0)
+        {
+            if (mainManager.getProduction())
+            {
+                int coin = Working();
+                mainManager.coinCount += coin;
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int lumberCount = 0;
     public int foodCount = 0;
     public int workerCount = 0;
+    public int workerEmployed = 0;
     public int coinCount = 0;
     private int foodReq = 2;
     [SerializeField] private int famineCounter = 0;
