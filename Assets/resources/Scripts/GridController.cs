@@ -15,7 +15,9 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tile hoverTile = null;
     private GameManager gm;
     public GameObject buildingObject = null;
-    public Building buildingTile = null;
+    [HideInInspector] public Building buildingTile = null;
+    public Tile impassable;
+    public Tile costly;
 
 
     private Vector3Int previousMousePos = new Vector3Int();
@@ -44,7 +46,7 @@ public class GridController : MonoBehaviour
         // Left mouse click -> add path tile
         if (Input.GetMouseButton(0) && !IsOverUI())
         {
-            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(buildingTile.displayImage))
+            if (buildings.GetTile(mousePos) == null)
             {
                 Debug.Log(mousePos);
                 Debug.Log(grid.CellToLocal(mousePos));
