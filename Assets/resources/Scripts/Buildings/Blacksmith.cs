@@ -5,14 +5,17 @@ using UnityEngine;
 public class Blacksmith : Building
 {
     private bool manned = false;
-    int lumberCost = 80;
-    int coinCost = 80;
-    int maxWorkers = 1;
-    int workers = 0;
+    
+    public GameObject utilsScriptObject;
+    private UtilsScript utilityScript;
+ 
     // Start is called before the first frame update
     void Start()
     {
-
+    utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
+    ItemCostClass item = utilityScript.findCost("Blacksmith");
+    lumberCost = item.lumberCost;
+    coinCost = item.moneyCost;
     }
 
     // Update is called once per frame
