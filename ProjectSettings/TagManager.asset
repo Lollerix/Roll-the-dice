@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Smith
+  - Lumber
+  - House
+  - Farm
+  - Cult
+  - Fortress
+  - Dock
   layers:
   - Default
   - TransparentFX

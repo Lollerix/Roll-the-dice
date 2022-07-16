@@ -10,8 +10,6 @@ public class Farm : Building
         coinCost = 60;
         maxWorkers = 4;
         workers = 0;
-        productionTime = 1.3f;
-        lastTimeActive = Time.time;
     }
 
 
@@ -20,10 +18,8 @@ public class Farm : Building
     {
         if (workers > 0)
         {
-            if (Time.time - lastTimeActive >= productionTime)
+            if (mainManager.getProduction())
             {
-                Debug.Log("Activate");
-                lastTimeActive = Time.time;
                 int food = Working();
                 Debug.Log(food);
                 mainManager.foodCount += food;

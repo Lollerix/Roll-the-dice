@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6138691037628766973}
   m_Layer: 0
   m_Name: Blacksmith
-  m_TagString: Untagged
+  m_TagString: Smith
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,4 +99,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayImage: {fileID: 11400000, guid: 575f71f3849eb8441b03b692b580a124, type: 2}
   workManager: {fileID: 0}
+  mainManager: {fileID: 0}
   workers: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4382336878859896014}
   m_Layer: 0
   m_Name: LumberCamp
-  m_TagString: Untagged
+  m_TagString: Lumber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,3 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayImage: {fileID: 11400000, guid: 14002538d6b600141a7312c834b485ed, type: 2}
+  workManager: {fileID: 0}
+  mainManager: {fileID: 0}
+  workers: 0
