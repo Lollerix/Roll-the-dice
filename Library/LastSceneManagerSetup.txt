@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/TestingMap.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
