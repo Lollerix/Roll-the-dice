@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+using System;
 
 public class GridController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap buildings = null;
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
-    public Building pathTile = null;
+    [HideInInspector] public Building buildingTile = null;
 
 
     private Vector3Int previousMousePos = new Vector3Int();
@@ -38,11 +39,11 @@ public class GridController : MonoBehaviour
         // Left mouse click -> add path tile
         if (Input.GetMouseButton(0) && !IsOverUI())
         {
-            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(pathTile.displayImage))
+            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(buildingTile.displayImage))
             {
-                buildings.SetTile(mousePos, pathTile.displayImage);
+                buildings.SetTile(mousePos, buildingTile.displayImage);
                 Vector3 a = mousePos;
-                Instantiate(pathTile, a, transform.rotation);
+                Instantiate(buildingTile, a, transform.rotation);
             }
         }
 
@@ -62,5 +63,10 @@ public class GridController : MonoBehaviour
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return grid.WorldToCell(mouseWorldPos);
+    }
+
+    public void TestCall(string v)
+    {
+        Debug.Log(v);
     }
 }
