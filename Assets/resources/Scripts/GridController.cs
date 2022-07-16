@@ -18,6 +18,7 @@ public class GridController : MonoBehaviour
     [HideInInspector] public Building buildingTile = null;
     public Tile openTerrain;
 
+    private bool isBuildingActive = false;
 
     private Vector3Int previousMousePos = new Vector3Int();
 
@@ -42,7 +43,7 @@ public class GridController : MonoBehaviour
         }
 
         // Left mouse click -> add path tile
-        if (Input.GetMouseButton(0) && !IsOverUI())
+        if (Input.GetMouseButtonDown(0) && !IsOverUI() && isBuildingActive)
         {
             if (buildings.GetTile(mousePos) == null && map.GetTile(mousePos).Equals(openTerrain))
             {
@@ -80,5 +81,14 @@ public class GridController : MonoBehaviour
     public void transformInTile()
     {
         buildingTile = buildingObject.GetComponent<Building>();
+    }
+
+    public void IsBuildingActive(bool boolean)
+    {
+        isBuildingActive = boolean;
+        if (boolean == false)
+        {
+            buildingTile = null;
+        }
     }
 }

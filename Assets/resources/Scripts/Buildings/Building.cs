@@ -21,7 +21,7 @@ public class Building : MonoBehaviour
 
     void Awake()
     {
-        
+
         utilsScriptObject = GameObject.Find("UtilityScript");
         utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
         workManager = GameObject.Find("WorkManager").GetComponent<WorkManager>();

@@ -5,14 +5,14 @@ using UnityEngine;
 public class Cultists : Building
 {
     private bool manned = false;
-    new string buildingName = "Cultist quarter";
+    new string buildingName = "Cultist temple";
 
     // Start is called before the first frame update
     void Start()
     {
-    ItemCostClass item = utilityScript.findCost("Cult");
-    lumberCost = item.lumberCost;
-    coinCost = item.moneyCost;
+        ItemCostClass item = utilityScript.findCost("Cult");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
     // Update is called once per frame
