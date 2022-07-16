@@ -93,6 +93,7 @@ public class ScrollableScript : MonoBehaviour
         instanciatedButton.onClick.AddListener(() => ButtonClicked(button.name));
         buttons.Add(instanciatedButton);
         rectTransform.sizeDelta += new Vector2(0,50);
+        rectTransform.position -= new Vector3(0,25);
     }
 
 
