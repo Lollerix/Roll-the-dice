@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LumberCamp : Building
 {
+
+    new string buildingName = "Lumber Camp";
     // Start is called before the first frame update
     void Start()
     {

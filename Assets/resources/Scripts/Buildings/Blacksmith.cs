@@ -9,6 +9,7 @@ public class Blacksmith : Building
     new int coinCost = 80;
     new int maxWorkers = 1;
     new int workers = 0;
+    new string name = "Blacksmith";
     // Start is called before the first frame update
     void Start()
     {

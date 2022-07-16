@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fortress : Building
 {
+    new string buildingName = "Fortress";
     // Start is called before the first frame update
     void Start()
     {

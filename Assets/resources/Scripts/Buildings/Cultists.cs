@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cultists : Building
 {
     private bool manned = false;
+    new string buildingName = "Cultist quarter";
     void Start()
     {
         lumberCost = 300;

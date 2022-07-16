@@ -5,6 +5,7 @@ using UnityEngine;
 public class House : Building
 {
     public bool famine = false;
+    new string buildingName = "House";
     void Start()
     {
         lumberCost = 30;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dock : Building
 {
+    new string buildingName = "Docks";
     // Start is called before the first frame update
     void Start()
     {

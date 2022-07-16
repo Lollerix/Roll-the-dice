@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Farm : Building
 {
+    new string buildingName = "Farm";
     void Start()
     {
         lumberCost = 20;

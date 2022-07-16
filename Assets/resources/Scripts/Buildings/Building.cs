@@ -12,6 +12,7 @@ public class Building : MonoBehaviour
     public int coinCost = 0;
     public int maxWorkers;
     public int workers;
+    public string buildingName;
     bool mouseOver = false;
     Vector3 mousePos;
 
@@ -43,7 +44,7 @@ public class Building : MonoBehaviour
 
         if (mouseOver && Input.GetMouseButton(1))
         {
-            GUI.Box(new Rect(mousePos.x, mousePos.y, 200, 100), "this is a test");
+
         }
     }
 }
