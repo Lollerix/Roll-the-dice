@@ -32,7 +32,7 @@ public class CameraControl : MonoBehaviour
         BorderScreenMovement(mousePosition);
 
         // When LMB clicked get mouse click position and set panning to true
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !panning)
+        if (Input.GetKeyDown(KeyCode.Mouse2) && !panning)
         {
             mouseClickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             panning = true;
@@ -46,7 +46,7 @@ public class CameraControl : MonoBehaviour
         }
 
         // If LMB is released, stop moving the camera
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse2))
             panning = false;
 
     }
