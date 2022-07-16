@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +9,16 @@ public class ScrollableScript : MonoBehaviour
 {
     public List<Button> buttons;
     public GridController gridControllerScript;
-    // Start is called before the first frame update
     RectTransform rectTransform;
+    private int lumberCost;
+    private int moneyCost;
+
+    public GameObject utilsScriptObject;
+    private UtilsScript utilityScript;
     void Start()
     {
+        utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
+
         rectTransform = GetComponent<RectTransform>();
         foreach (Button button in buttons)
         {
@@ -20,19 +27,22 @@ public class ScrollableScript : MonoBehaviour
         }
 
         #if UNITY_EDITOR
-        addButton("Smith");
+        addButton("Blacksmith");
         addButton("Farm");
         addButton("House");
         addButton("Lumber");
-
+        addButton("Cult");
         #endif
+
+
+
     }
 
     void ButtonClicked(string name)
     {
         switch (name)
         {
-            case "Smith":
+            case "Blacksmith":
                 gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Blacksmith", typeof(GameObject));
                 break;
 
@@ -58,23 +68,21 @@ public class ScrollableScript : MonoBehaviour
         }
     }
 
-
     //Aggiunge il pulsante corrispondente al nome inserito.
     //Esempio: Inserisci "Farm" viene aggiunto il pulsante della farm nel riquadro destro della UI
-     void addButton(String name)
+    void addButton(String name)
     {
         Button button;
         switch (name)
         {
-            case "Smith":
-                button = (Button)Resources.Load("Prefabs/Buttons/Smith", typeof(Button)); break;
+            case "Blacksmith":
+                button = (Button)Resources.Load("Prefabs/Buttons/Smith", typeof(Button));break;
 
             case "Lumber":
                 button = (Button)Resources.Load("Prefabs/Buttons/Lumber", typeof(Button)); break;
 
             case "Farm":
                 button = (Button)Resources.Load("Prefabs/Buttons/Farm", typeof(Button)); break;
-
             case "House":
                 button = (Button)Resources.Load("Prefabs/Buttons/House", typeof(Button)); break;
 
@@ -88,12 +96,27 @@ public class ScrollableScript : MonoBehaviour
                 break;
         }
 
+        ItemCostClass itemCostClass = utilityScript.findCost(name);
+        lumberCost = itemCostClass.lumberCost;
+        moneyCost = itemCostClass.moneyCost;
+
         Button instanciatedButton = Instantiate(button, new Vector3(0,0,0), new Quaternion(0,0,0,0));
         instanciatedButton.transform.SetParent(gameObject.transform, false);
         instanciatedButton.onClick.AddListener(() => ButtonClicked(button.name));
         buttons.Add(instanciatedButton);
+
         rectTransform.sizeDelta += new Vector2(0,50);
         rectTransform.position -= new Vector3(0,25);
+
+
+
+        Transform costElement = instanciatedButton.transform.GetChild(0);
+        costElement.GetChild(0).GetComponent<TextMeshProUGUI>().text = lumberCost.ToString();
+        costElement.GetChild(2).GetComponent<TextMeshProUGUI>().text = moneyCost.ToString();
+
+
+
+
     }
 
 
