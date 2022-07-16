@@ -10,10 +10,9 @@ public class Cultists : Building
     // Start is called before the first frame update
     void Start()
     {
-        utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
-        ItemCostClass item = utilityScript.findCost("Cult");
-        lumberCost = item.lumberCost;
-        coinCost = item.moneyCost;
+    ItemCostClass item = utilityScript.findCost("Cult");
+    lumberCost = item.lumberCost;
+    coinCost = item.moneyCost;
     }
 
     // Update is called once per frame

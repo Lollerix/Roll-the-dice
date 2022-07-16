@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Farm : Building
 {
-    new string buildingName = "Farm";
-
-    // Start is called before the first frame update
     void Start()
     {
-        utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
-        ItemCostClass item = utilityScript.findCost("Farm");
-        lumberCost = item.lumberCost;
-        coinCost = item.moneyCost;
+    ItemCostClass item = utilityScript.findCost("Farm");
+    lumberCost = item.lumberCost;
+    coinCost = item.moneyCost;
     }
 
 
