@@ -12,7 +12,8 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap buildings = null;
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
-    public Building pathTile = null;
+    private GameManager gm;
+    public Building buildingTile = null;
 
 
     private Vector3Int previousMousePos = new Vector3Int();
@@ -21,6 +22,7 @@ public class GridController : MonoBehaviour
     void Start()
     {
         grid = gameObject.GetComponent<Grid>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -38,11 +40,9 @@ public class GridController : MonoBehaviour
         // Left mouse click -> add path tile
         if (Input.GetMouseButton(0) && !IsOverUI())
         {
-            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(pathTile.displayImage))
+            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(buildingTile.displayImage))
             {
-                buildings.SetTile(mousePos, pathTile.displayImage);
-                Vector3 a = mousePos;
-                Instantiate(pathTile, a, transform.rotation);
+                Build(mousePos);
             }
         }
 
@@ -62,5 +62,16 @@ public class GridController : MonoBehaviour
     {
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return grid.WorldToCell(mouseWorldPos);
+    }
+
+    private void Build(Vector3Int mousePos)
+    {
+        if (buildingTile.lumberCost <= gm.lumberCount && buildingTile.coinCost <= gm.coinCount)
+        {
+            gm.lumberCount -= buildingTile.lumberCost; gm.coinCount -= buildingTile.coinCost;
+            buildings.SetTile(mousePos, buildingTile.displayImage);
+            Vector3 a = mousePos;
+            Instantiate(buildingTile, a, transform.rotation);
+        }
     }
 }
