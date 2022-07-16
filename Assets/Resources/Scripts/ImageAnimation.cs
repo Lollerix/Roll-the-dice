@@ -13,7 +13,7 @@ public class ImageAnimation : MonoBehaviour
     private int index = 0;
     private Image image;
     private int frame = 0;
-    private bool play = false;
+    public bool play = false;
 
     void Awake()
     {

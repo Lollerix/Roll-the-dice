@@ -5,13 +5,14 @@ using UnityEngine;
 public class House : Building
 {
     public bool famine = false;
-    new string buildingName = "House";
+    new string buildingName;
     void Start()
     {
         lumberCost = 30;
         coinCost = 80;
         maxWorkers = 4;
         workers = 0;
+        buildingName = "House";
     }
 
     // Update is called once per frame

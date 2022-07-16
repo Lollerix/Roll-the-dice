@@ -18,6 +18,7 @@ public class PanelManager : MonoBehaviour
     private int dieMax;
     private int maxWorkers;
     private int workers;
+    private Building building;
 
     public void Start()
     {
@@ -25,21 +26,10 @@ public class PanelManager : MonoBehaviour
         WorkManager wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
         dieBase = wm.getBaseMax();
         dieMax = wm.getDieMax();
-#if UNITY_EDITOR
-        workers = 1;
-        maxWorkers = 5;
-        workerTxt.text = workers.ToString();
-        maxWorkerTxt.text = maxWorkers.ToString();
-        for (int i = 0; i < workers; i++)
-        {
-            dice[i].Restart();
-        }
-        minRangeTxt.text = (workers * dieBase).ToString();
-        maxRangeTxt.text = (workers * dieMax).ToString();
-#endif
     }
     public void Initialize(Building building)
     {
+        this.building = building;
         workers = building.workers;
         maxWorkers = building.maxWorkers;
         workerTxt.text = workers.ToString();
@@ -51,9 +41,28 @@ public class PanelManager : MonoBehaviour
         maxRangeTxt.text = (workers * dieMax).ToString();
         titleTxt.text = building.buildingName;
     }
-    public void Awake()
+    public void Update()
     {
+        if (this.building != null && this.building.buildingName.Equals("House"))
+        {
+            workers = building.workers;
+            maxWorkers = building.maxWorkers;
+            workerTxt.text = workers.ToString();
+            int i = 0;
+            for (; i < workers; i++)
+            {
+                if (!dice[i].play)
+                    dice[i].Restart();
+            }
+            for (; i < maxWorkers; i++)
+            {
+                if (dice[i].play)
+                    dice[i].Stop();
+            }
+            minRangeTxt.text = (workers * dieBase).ToString();
+            maxRangeTxt.text = (workers * dieMax).ToString();
 
+        }
     }
 
     public void IncreaseWorkers()
@@ -61,6 +70,7 @@ public class PanelManager : MonoBehaviour
         if (gm.workerEmployed == gm.workerCount) { return; } //Error message
         if (workers + 1 > maxWorkers) { return; } //Error message
         workers++;
+        building.workers++;
         workerTxt.text = workers.ToString();
         dice[workers - 1].Restart();
         minRangeTxt.text = (workers * dieBase).ToString();
@@ -70,6 +80,7 @@ public class PanelManager : MonoBehaviour
     {
         if (workers - 1 < 0) return;
         workers--;
+        building.workers--;
         dice[workers].Stop();
         workerTxt.text = workers.ToString();
         minRangeTxt.text = (workers * dieBase).ToString();

@@ -30,8 +30,6 @@ public class Building : MonoBehaviour
     {
         mouseOver = true;
         mousePos = Input.mousePosition;
-
-        Debug.Log(mousePos);
     }
 
     private void OnMouseExit()

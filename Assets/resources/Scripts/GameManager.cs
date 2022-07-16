@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
+    public GameObject optionsObj;
 
     public int lumberCount = 0;
     public int foodCount = 0;
@@ -81,16 +82,15 @@ public class GameManager : MonoBehaviour
 
     public void openOptionPanel(Building building)
     {
-        GameObject optionsObj = GameObject.Find("OptionPanel");
-        if (optionsObj.activeSelf) closeOptionPanel();
+
+        if (optionsObj.activeSelf) closeOptionPanel(optionsObj);
         PanelManager options = optionsObj.GetComponent<PanelManager>();
         options.Initialize(building);
         optionsObj.SetActive(true);
 
     }
-    public void closeOptionPanel()
+    public void closeOptionPanel(GameObject optionsObj)
     {
-        GameObject optionsObj = GameObject.Find("OptionPanel");
         optionsObj.SetActive(false);
     }
 
