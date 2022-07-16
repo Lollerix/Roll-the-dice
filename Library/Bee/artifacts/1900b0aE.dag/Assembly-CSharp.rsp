@@ -376,6 +376,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Buildings/Blacksmith.cs"
 "Assets/Scripts/Buildings/Building.cs"
+"Assets/Scripts/Buildings/Cultists.cs"
+"Assets/Scripts/Buildings/Farm.cs"
 "Assets/Scripts/Buildings/LumberCamp.cs"
 "Assets/Scripts/CameraControl.cs"
 "Assets/Scripts/GridController.cs"

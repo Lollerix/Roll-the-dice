@@ -37,12 +37,14 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraControl.cs" />
-     <Compile Include="Assets\Scripts\GridController.cs" />
      <Compile Include="Assets\Scripts\Buildings\Building.cs" />
-     <Compile Include="Assets\Scripts\Buildings\LumberCamp.cs" />
      <Compile Include="Assets\Scripts\WorkManager.cs" />
      <Compile Include="Assets\Scripts\MainManager.cs" />
      <Compile Include="Assets\Scripts\Buildings\Blacksmith.cs" />
+     <Compile Include="Assets\Scripts\Buildings\LumberCamp.cs" />
+     <Compile Include="Assets\Scripts\GridController.cs" />
+     <Compile Include="Assets\Scripts\Buildings\Cultists.cs" />
+     <Compile Include="Assets\Scripts\Buildings\Farm.cs" />
      <None Include="Assets\Artworks\Tiny-Islands-by-Majadroid\INFO.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.6f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

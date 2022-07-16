@@ -11,7 +11,8 @@ public class LumberCamp : Building
         coinCost = 10;
         maxWorkers = 2;
         workers = 0;
-        productionTime = 500;
+        productionTime = 1.3f;
+        lastTimeActive = Time.time;
     }
 
 
@@ -22,8 +23,10 @@ public class LumberCamp : Building
         {
             if (Time.time - lastTimeActive >= productionTime)
             {
+                Debug.Log("Activate");
                 lastTimeActive = Time.time;
                 int lumber = Working();
+                Debug.Log(lumber);
                 mainManager.lumberCount += lumber;
             }
         }

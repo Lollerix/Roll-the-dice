@@ -8,7 +8,7 @@ public class WorkManager : MonoBehaviour
     //Variabile per le facce che compongono il dado
     private int dieMax = 1;
     //Variabile per il numero minimo da aggiungere al dado
-    private int baseMax = 0;
+    private int baseMax = 1;
 
     public int getDieMax()
     {
@@ -35,9 +35,9 @@ public class WorkManager : MonoBehaviour
     public int IncreaseBase(int increment)
     {
         baseMax += increment;
-        if (baseMax < 0)
+        if (baseMax < 1)
         {
-            baseMax = 0;
+            baseMax = 1;
         }
         return baseMax;
     }
