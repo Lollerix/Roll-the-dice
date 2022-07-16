@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+using System;
 
 public class GridController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
     private GameManager gm;
-    public Building buildingTile = null;
+    [HideInInspector] public Building buildingTile = null;
 
 
     private Vector3Int previousMousePos = new Vector3Int();
@@ -73,5 +74,9 @@ public class GridController : MonoBehaviour
             Vector3 a = mousePos;
             Instantiate(buildingTile, a, transform.rotation);
         }
+    }
+    public void TestCall(string v)
+    {
+        Debug.Log(v);
     }
 }
