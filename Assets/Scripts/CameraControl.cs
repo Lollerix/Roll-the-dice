@@ -20,24 +20,49 @@ public class CameraControl : MonoBehaviour
     float topBorder = Screen.height * 0.95f;
     float bottomBorder = Screen.height * 0.05f;
 
+    Camera cam;
+    public float maxZoom = 4;
+    public float minZoom = 0.1f;
+    [SerializeField] float zoomSpeed;
+    public float zoomSpeed2 = 1;
+    float targetZoom;
+
     void Start()
     {
+        cam = gameObject.GetComponent<Camera>();
     }
 
     void Update()
     {
         WasdMovement();
+#if !UNITY_EDITOR
+            BorderScreenMovement();
+#endif
+        MmbMovement();
+        ZoomMovement();
 
-        Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        BorderScreenMovement(mousePosition);
+    }
 
-        // When LMB clicked get mouse click position and set panning to true
+    private void ZoomMovement()
+    {
+        if (Input.mouseScrollDelta != Vector2.zero)
+        {
+            targetZoom += Input.mouseScrollDelta.y * zoomSpeed;
+            targetZoom = Mathf.Clamp(targetZoom, maxZoom, minZoom);
+            float newSize = Mathf.MoveTowards(cam.orthographicSize, targetZoom, zoomSpeed2 * Time.deltaTime);
+            cam.orthographicSize = newSize;
+        }
+    }
+
+    private void MmbMovement()
+    {
+        // When MMB clicked get mouse click position and set panning to true
         if (Input.GetKeyDown(KeyCode.Mouse2) && !panning)
         {
             mouseClickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             panning = true;
         }
-        // If LMB is already clicked, move the camera following the mouse position update
+        // If MMB is already clicked, move the camera following the mouse position update
         if (panning)
         {
             mouseCurrentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -45,15 +70,14 @@ public class CameraControl : MonoBehaviour
             transform.position += new Vector3(-distance.x, -distance.y, 0);
         }
 
-        // If LMB is released, stop moving the camera
+        // If MMB is released, stop moving the camera
         if (Input.GetKeyUp(KeyCode.Mouse2))
             panning = false;
-
     }
 
-    private void BorderScreenMovement(Vector2 mousePosition)
+    private void BorderScreenMovement()
     {
-
+        Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
         if (mousePosition.x < leftBorder)
         {
