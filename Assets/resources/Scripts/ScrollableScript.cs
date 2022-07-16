@@ -23,13 +23,23 @@ public class ScrollableScript : MonoBehaviour
         switch (tag)
         {
             case "Smith":
-                gridControllerScript.TestCall("Sono in Smith");
-                gridControllerScript.buildingObject = (GameObject) Resources.Load("Prefabs/Blacksmith", typeof(GameObject));
+                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Blacksmith", typeof(GameObject));
+                break;
+
+            case "Lumber":
+                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/LumberCamp", typeof(GameObject));
                 break;
 
             case "Farm":
-                gridControllerScript.TestCall("Sono in Farm");
-                gridControllerScript.buildingObject = (GameObject) Resources.Load("Prefabs/Farm", typeof(GameObject));
+                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Farm", typeof(GameObject));
+                break;
+
+            case "House":
+                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/House", typeof(GameObject));
+                break;
+
+            case "Cult":
+                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Cultists", typeof(GameObject));
                 break;
 
             default:
@@ -38,5 +48,5 @@ public class ScrollableScript : MonoBehaviour
         }
     }
 
-  
+
 }
