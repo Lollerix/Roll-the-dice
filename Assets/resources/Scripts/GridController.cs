@@ -16,8 +16,7 @@ public class GridController : MonoBehaviour
     private GameManager gm;
     public GameObject buildingObject = null;
     [HideInInspector] public Building buildingTile = null;
-    public Tile impassable;
-    public Tile costly;
+    public Tile openTerrain;
 
 
     private Vector3Int previousMousePos = new Vector3Int();
@@ -46,7 +45,7 @@ public class GridController : MonoBehaviour
         // Left mouse click -> add path tile
         if (Input.GetMouseButton(0) && !IsOverUI())
         {
-            if (buildings.GetTile(mousePos) == null)
+            if (buildings.GetTile(mousePos) == null && map.GetTile(mousePos).Equals(openTerrain))
             {
                 Debug.Log(mousePos);
                 Debug.Log(grid.CellToLocal(mousePos));

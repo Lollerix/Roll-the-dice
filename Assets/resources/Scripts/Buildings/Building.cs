@@ -29,6 +29,8 @@ public class Building : MonoBehaviour
     {
         mouseOver = true;
         mousePos = Input.mousePosition;
+
+        Debug.Log(mousePos);
     }
 
     private void OnMouseExit()
@@ -41,7 +43,7 @@ public class Building : MonoBehaviour
 
         if (mouseOver && Input.GetMouseButton(1))
         {
-            GUI.Box(new Rect(mousePos.x, mousePos.y, 200f, 100f), "this is a test");
+            GUI.Box(new Rect(mousePos.x, mousePos.y, 200, 100), "this is a test");
         }
     }
 }
