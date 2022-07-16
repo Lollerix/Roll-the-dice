@@ -7,7 +7,7 @@ public class Building : MonoBehaviour
 {
     public Tile displayImage;
     public WorkManager workManager;
-    public MainManager mainManager;
+    public GameManager mainManager;
     protected int lumberCost = 0;
     protected int coinCost = 0;
     protected int maxWorkers;
@@ -16,7 +16,7 @@ public class Building : MonoBehaviour
     void Awake()
     {
         workManager = GameObject.Find("WorkManager").GetComponent<WorkManager>();
-        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+        mainManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public virtual int Working()
