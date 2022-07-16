@@ -27,6 +27,8 @@ public class House : Building
                 if (famineCounter > 10)
                 {
                     workers -= 1;
+                    mainManager.workerCount--;
+                    if (mainManager.workerCount < 0) mainManager.workerCount = 0;
                     if (workers < 0) workers = 0;
                 }
             }
@@ -39,6 +41,7 @@ public class House : Building
         if (mainManager.getProduction() && workers < maxWorkers)
         {
             workers++;
+            mainManager.workerCount++;
         }
     }
 }
