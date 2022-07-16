@@ -13,9 +13,6 @@ public class Building : MonoBehaviour
     protected int maxWorkers;
     public int workers;
 
-    protected float lastTimeActive;
-    protected float productionTime;
-
     void Awake()
     {
         workManager = GameObject.Find("WorkManager").GetComponent<WorkManager>();

@@ -10,7 +10,7 @@ public class MainManager : MonoBehaviour
     public int coinCount = 0;
     float productionTime = 1.3f;
     float lastTimeActive;
-    public bool productionActivated = false;
+    private bool productionActivated = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +25,7 @@ public class MainManager : MonoBehaviour
     {
         if (Time.time - lastTimeActive >= productionTime)
         {
+            lastTimeActive = Time.time;
             productionActivated = true;
         }
         else
@@ -33,5 +34,9 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    public bool getProduction()
+    {
+        return productionActivated;
+    }
 
 }
