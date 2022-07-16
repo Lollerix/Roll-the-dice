@@ -21,7 +21,7 @@ public class LumberCamp : Building
     {
         if (workers > 0)
         {
-            if (Time.time - lastTimeActive >= productionTime)
+            if (mainManager.productionActivated)
             {
                 Debug.Log("Activate");
                 lastTimeActive = Time.time;
