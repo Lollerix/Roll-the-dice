@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,11 +23,13 @@ public class ScrollableScript : MonoBehaviour
         switch (tag)
         {
             case "Smith":
-                gridControllerScript.TestCall("Sono smith");
+                gridControllerScript.TestCall("Sono in Smith");
+                gridControllerScript.buildingTile = (Building) Resources.Load("Prefabs/Blacksmith", typeof(GameObject));
                 break;
 
             case "Farm":
-                  gridControllerScript.TestCall("Sono farmer");
+                gridControllerScript.TestCall("Sono in Farm");
+                gridControllerScript.buildingTile = (Building) Resources.Load("Prefabs/Farm", typeof(GameObject));
                 break;
 
             default:
@@ -34,4 +37,6 @@ public class ScrollableScript : MonoBehaviour
                 break;
         }
     }
+
+  
 }
