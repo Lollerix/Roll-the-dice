@@ -81,7 +81,17 @@ public class GameManager : MonoBehaviour
 
     public void openOptionPanel(Building building)
     {
-        PanelManager options = GameObject.Find("OptionPanel").GetComponent<PanelManager>();
+        GameObject optionsObj = GameObject.Find("OptionPanel");
+        if (optionsObj.activeSelf) closeOptionPanel();
+        PanelManager options = optionsObj.GetComponent<PanelManager>();
+        options.Initialize(building);
+        optionsObj.SetActive(true);
+
+    }
+    public void closeOptionPanel()
+    {
+        GameObject optionsObj = GameObject.Find("OptionPanel");
+        optionsObj.SetActive(false);
     }
 
     public bool getProduction()

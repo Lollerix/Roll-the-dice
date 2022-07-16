@@ -44,7 +44,7 @@ public class Building : MonoBehaviour
 
         if (mouseOver && Input.GetMouseButton(1))
         {
-
+            mainManager.openOptionPanel(this);
         }
     }
 }
