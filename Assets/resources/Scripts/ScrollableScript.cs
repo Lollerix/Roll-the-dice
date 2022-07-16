@@ -13,10 +13,11 @@ public class ScrollableScript : MonoBehaviour
     private int lumberCost;
     private int moneyCost;
 
-    public GameObject utilsScriptObject;
+    private GameObject utilsScriptObject;
     private UtilsScript utilityScript;
     void Start()
     {
+        utilsScriptObject = GameObject.Find("UtilityScript");
         utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
 
         rectTransform = GetComponent<RectTransform>();
@@ -66,6 +67,7 @@ public class ScrollableScript : MonoBehaviour
                 gridControllerScript.TestCall("Sono in default");
                 break;
         }
+        gridControllerScript.transformInTile();
     }
 
     //Aggiunge il pulsante corrispondente al nome inserito.
@@ -76,7 +78,7 @@ public class ScrollableScript : MonoBehaviour
         switch (name)
         {
             case "Blacksmith":
-                button = (Button)Resources.Load("Prefabs/Buttons/Smith", typeof(Button));break;
+                button = (Button)Resources.Load("Prefabs/Buttons/Blacksmith", typeof(Button));break;
 
             case "Lumber":
                 button = (Button)Resources.Load("Prefabs/Buttons/Lumber", typeof(Button)); break;

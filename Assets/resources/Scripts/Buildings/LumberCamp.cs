@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class LumberCamp : Building
 {
-    // Start is called before the first frame update
-     public GameObject utilsScriptObject;
-    private UtilsScript utilityScript;
- 
-    // Start is called before the first frame update
     void Start()
     {
-    utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
     ItemCostClass item = utilityScript.findCost("Lumber");
     lumberCost = item.lumberCost;
     coinCost = item.moneyCost;

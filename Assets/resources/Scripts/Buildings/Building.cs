@@ -15,8 +15,14 @@ public class Building : MonoBehaviour
     bool mouseOver = false;
     Vector3 mousePos;
 
+    private GameObject utilsScriptObject;
+    public UtilsScript utilityScript;
+
     void Awake()
     {
+        
+        utilsScriptObject = GameObject.Find("UtilityScript");
+        utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
         workManager = GameObject.Find("WorkManager").GetComponent<WorkManager>();
         mainManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }

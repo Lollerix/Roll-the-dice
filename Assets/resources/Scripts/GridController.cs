@@ -25,7 +25,6 @@ public class GridController : MonoBehaviour
     {
         grid = gameObject.GetComponent<Grid>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        buildingTile = buildingObject.GetComponent<Building>();
     }
 
     // Update is called once per frame
@@ -35,7 +34,7 @@ public class GridController : MonoBehaviour
         Vector3Int mousePos = GetMousePosition();
         if (!mousePos.Equals(previousMousePos))
         {
-            //mousePos = new Vector3Int(mousePos.x, mousePos.y, 1);
+            mousePos = new Vector3Int(mousePos.x, mousePos.y, 1);
             interactive.SetTile(previousMousePos, null); // Remove old hoverTile
             interactive.SetTile(mousePos, hoverTile);
             previousMousePos = mousePos;
@@ -78,5 +77,9 @@ public class GridController : MonoBehaviour
     public void TestCall(string v)
     {
         Debug.Log(v);
+    }
+
+    public void transformInTile(){
+                buildingTile = buildingObject.GetComponent<Building>();
     }
 }
