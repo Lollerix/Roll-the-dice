@@ -116,10 +116,10 @@ public class ScrollableScript : MonoBehaviour
         costElement.GetChild(0).GetComponent<TextMeshProUGUI>().text = lumberCost.ToString();
         costElement.GetChild(2).GetComponent<TextMeshProUGUI>().text = moneyCost.ToString();
 
-
-
-
     }
 
+    public void returnToBaseOption(){
+        this.transform.parent.transform.parent.gameObject.SetActive(false);
+    }
 
 }

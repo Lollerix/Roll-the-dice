@@ -17,6 +17,7 @@ public class GridController : MonoBehaviour
     public GameObject buildingObject = null;
     public Building buildingTile = null;
 
+    private bool isBuildingActive= false;
 
     private Vector3Int previousMousePos = new Vector3Int();
 
@@ -41,9 +42,9 @@ public class GridController : MonoBehaviour
         }
 
         // Left mouse click -> add path tile
-        if (Input.GetMouseButton(0) && !IsOverUI())
+        if (Input.GetMouseButtonDown(0) && !IsOverUI() && isBuildingActive)
         {
-            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(buildingTile.displayImage))
+            if (buildingTile != null && (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(buildingTile.displayImage)))
             {
                 Debug.Log(mousePos);
                 Debug.Log(grid.CellToLocal(mousePos));
@@ -81,5 +82,12 @@ public class GridController : MonoBehaviour
 
     public void transformInTile(){
                 buildingTile = buildingObject.GetComponent<Building>();
+    }
+
+    public void IsBuildingActive(bool boolean){
+        isBuildingActive = boolean;
+        if(boolean == false){
+            buildingTile = null;
+        }
     }
 }
