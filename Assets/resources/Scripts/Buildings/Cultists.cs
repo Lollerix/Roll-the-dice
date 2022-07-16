@@ -6,12 +6,14 @@ public class Cultists : Building
 {
     private bool manned = false;
     new string buildingName = "Cultist quarter";
+
+    // Start is called before the first frame update
     void Start()
     {
-        lumberCost = 300;
-        coinCost = 500;
-        maxWorkers = 1;
-        workers = 0;
+        utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
+        ItemCostClass item = utilityScript.findCost("Cult");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
     // Update is called once per frame

@@ -5,12 +5,14 @@ using UnityEngine;
 public class Farm : Building
 {
     new string buildingName = "Farm";
+
+    // Start is called before the first frame update
     void Start()
     {
-        lumberCost = 20;
-        coinCost = 60;
-        maxWorkers = 4;
-        workers = 0;
+        utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
+        ItemCostClass item = utilityScript.findCost("Farm");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
 

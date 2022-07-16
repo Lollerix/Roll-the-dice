@@ -13,7 +13,10 @@ public class Blacksmith : Building
     // Start is called before the first frame update
     void Start()
     {
-
+        utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
+        ItemCostClass item = utilityScript.findCost("Blacksmith");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
     // Update is called once per frame

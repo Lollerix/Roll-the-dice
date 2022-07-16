@@ -6,13 +6,16 @@ public class Dock : Building
 {
     new string buildingName = "Docks";
     // Start is called before the first frame update
+  public GameObject utilsScriptObject;
+    private UtilsScript utilityScript;
+ 
+    // Start is called before the first frame update
     void Start()
     {
-        lumberCost = 100;
-        coinCost = 100;
-        maxWorkers = 5;
-        workers = 0;
-
+    utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
+    ItemCostClass item = utilityScript.findCost("Dock");
+    lumberCost = item.lumberCost;
+    coinCost = item.moneyCost;
     }
 
     // Update is called once per frame
