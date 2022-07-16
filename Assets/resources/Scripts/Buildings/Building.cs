@@ -12,6 +12,8 @@ public class Building : MonoBehaviour
     public int coinCost = 0;
     public int maxWorkers;
     public int workers;
+    bool mouseOver = false;
+    Vector3 mousePos;
 
     void Awake()
     {
@@ -22,5 +24,24 @@ public class Building : MonoBehaviour
     public virtual int Working()
     {
         return Random.Range((workManager.getBaseMax() * workers), (workManager.getDieMax() * workers));
+    }
+    private void OnMouseOver()
+    {
+        mouseOver = true;
+        mousePos = Input.mousePosition;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseOver = false;
+    }
+
+    private void OnGUI()
+    {
+
+        if (mouseOver && Input.GetMouseButton(1))
+        {
+            GUI.Box(new Rect(mousePos.x, mousePos.y, 200f, 100f), "this is a test");
+        }
     }
 }

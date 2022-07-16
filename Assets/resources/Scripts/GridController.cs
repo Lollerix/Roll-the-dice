@@ -14,6 +14,7 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
     private GameManager gm;
+    public GameObject buildingObj = null;
     public Building buildingTile = null;
 
 
@@ -24,6 +25,7 @@ public class GridController : MonoBehaviour
     {
         grid = gameObject.GetComponent<Grid>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        buildingTile = buildingObj.GetComponent<Building>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class GridController : MonoBehaviour
         Vector3Int mousePos = GetMousePosition();
         if (!mousePos.Equals(previousMousePos))
         {
+            //mousePos = new Vector3Int(mousePos.x, mousePos.y, 1);
             interactive.SetTile(previousMousePos, null); // Remove old hoverTile
             interactive.SetTile(mousePos, hoverTile);
             previousMousePos = mousePos;
@@ -44,15 +47,11 @@ public class GridController : MonoBehaviour
             if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(buildingTile.displayImage))
             {
                 Debug.Log(mousePos);
-                Build(mousePos);
+                Debug.Log(grid.CellToLocal(mousePos));
+                Build(grid.CellToLocal(mousePos));
             }
         }
 
-        // Right mouse click -> remove path tile
-        if (Input.GetMouseButton(1))
-        {
-            buildings.SetTile(mousePos, null);
-        }
     }
 
     private bool IsOverUI()
@@ -66,14 +65,14 @@ public class GridController : MonoBehaviour
         return grid.WorldToCell(mouseWorldPos);
     }
 
-    private void Build(Vector3Int mousePos)
+    private void Build(Vector3 mousePos)
     {
         if (buildingTile.lumberCost <= gm.lumberCount && buildingTile.coinCost <= gm.coinCount)
         {
+            Debug.Log(buildingTile.lumberCost);
             gm.lumberCount -= buildingTile.lumberCost; gm.coinCount -= buildingTile.coinCost;
-            buildings.SetTile(mousePos, buildingTile.displayImage);
-            Vector3 a = mousePos;
-            Instantiate(buildingTile, a, transform.rotation);
+            buildings.SetTile(grid.WorldToCell(mousePos), buildingTile.displayImage);
+            GameObject obj = Instantiate(buildingObj, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
         }
     }
     public void TestCall(string v)
