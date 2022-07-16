@@ -8,9 +8,9 @@ public class Building : MonoBehaviour
     public Tile displayImage;
     public WorkManager workManager;
     public GameManager mainManager;
-    protected int lumberCost = 0;
-    protected int coinCost = 0;
-    protected int maxWorkers;
+    public int lumberCost = 0;
+    public int coinCost = 0;
+    public int maxWorkers;
     public int workers;
 
     void Awake()
