@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         {
             lastTimeActive = Time.time;
             productionActivated = true;
-            calculateFood();
+            //calculateFood();
         }
         else
         {
