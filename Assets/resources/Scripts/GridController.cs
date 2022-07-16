@@ -14,7 +14,6 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
     private GameManager gm;
-    public GameObject buildingObject;
     public Building buildingTile = null;
 
 

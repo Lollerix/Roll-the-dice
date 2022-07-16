@@ -20,26 +20,32 @@ public class ScrollableScript : MonoBehaviour
 
     void ButtonClicked(string tag)
     {
+        GameObject buildingObj;
         switch (tag)
         {
             case "Smith":
-                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Blacksmith", typeof(GameObject));
+                buildingObj = (GameObject)Resources.Load("Prefabs/Blacksmith", typeof(GameObject));
+                gridControllerScript.buildingTile = buildingObj.GetComponent<Blacksmith>();
                 break;
 
             case "Lumber":
-                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/LumberCamp", typeof(GameObject));
+                buildingObj = (GameObject)Resources.Load("Prefabs/LumberCamp", typeof(GameObject));
+                gridControllerScript.buildingTile = buildingObj.GetComponent<LumberCamp>();
                 break;
 
             case "Farm":
-                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Farm", typeof(GameObject));
+                buildingObj = (GameObject)Resources.Load("Prefabs/Farm", typeof(GameObject));
+                gridControllerScript.buildingTile = buildingObj.GetComponent<Farm>();
                 break;
 
             case "House":
-                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/House", typeof(GameObject));
+                buildingObj = (GameObject)Resources.Load("Prefabs/House", typeof(GameObject));
+                gridControllerScript.buildingTile = buildingObj.GetComponent<House>();
                 break;
 
             case "Cult":
-                gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Cultists", typeof(GameObject));
+                buildingObj = (GameObject)Resources.Load("Prefabs/Cultists", typeof(GameObject));
+                gridControllerScript.buildingTile = buildingObj.GetComponent<Cultists>();
                 break;
 
             default:

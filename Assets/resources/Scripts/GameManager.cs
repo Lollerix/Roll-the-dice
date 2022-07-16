@@ -51,27 +51,31 @@ public class GameManager : MonoBehaviour
     private void calculateFood()
     {
         GameObject[] array = GameObject.FindGameObjectsWithTag("House");
-        foreach (GameObject x in array)
+        if (array.Length != 0)
         {
-            House t = x.GetComponent<House>();
-            foodCount -= (t.workers * foodReq);
-            if (foodCount < 0)
+            foreach (GameObject x in array)
             {
-                famineCounter++;
-                if (famineCounter > 10)
+                House t = x.GetComponent<House>();
+                foodCount -= (t.workers * foodReq);
+                if (foodCount < 0)
                 {
-                    t.famine = true;
-                    t.workers--;
-                    workerCount--;
-                    if (workerCount < 0) workerCount = 0;
-                    if (t.workers < 0) t.workers = 0;
+                    famineCounter++;
+                    if (famineCounter > 10)
+                    {
+                        t.famine = true;
+                        t.workers--;
+                        workerCount--;
+                        if (workerCount < 0) workerCount = 0;
+                        if (t.workers < 0) t.workers = 0;
+                    }
+                }
+                else
+                {
+                    t.famine = false;
+                    famineCounter--;
                 }
             }
-            else
-            {
-                t.famine = false;
-                famineCounter--;
-            }
+
         }
     }
 
