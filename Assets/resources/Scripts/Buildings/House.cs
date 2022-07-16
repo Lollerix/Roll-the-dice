@@ -5,13 +5,8 @@ using UnityEngine;
 public class House : Building
 {
     public bool famine = false;
-   public GameObject utilsScriptObject;
-    private UtilsScript utilityScript;
- 
-    // Start is called before the first frame update
     void Start()
     {
-    utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
     ItemCostClass item = utilityScript.findCost("House");
     lumberCost = item.lumberCost;
     coinCost = item.moneyCost;
