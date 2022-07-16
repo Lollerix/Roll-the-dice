@@ -11,7 +11,7 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap buildings = null;
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
-    [SerializeField] private Tile pathTile = null;
+    public Building pathTile = null;
 
 
     private Vector3Int previousMousePos = new Vector3Int();
@@ -37,7 +37,12 @@ public class GridController : MonoBehaviour
         // Left mouse click -> add path tile
         if (Input.GetMouseButton(0))
         {
-            buildings.SetTile(mousePos, pathTile);
+            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(pathTile.displayImage))
+            {
+                buildings.SetTile(mousePos, pathTile.displayImage);
+                Vector3 a = mousePos;
+                Instantiate(pathTile, a, transform.rotation);
+            }
         }
 
         // Right mouse click -> remove path tile
