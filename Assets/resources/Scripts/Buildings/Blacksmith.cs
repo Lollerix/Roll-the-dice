@@ -5,7 +5,7 @@ using UnityEngine;
 public class Blacksmith : Building
 {
     private bool manned = false;
-    
+    // Start is called before the first frame update
     void Start()
     {
     ItemCostClass item = utilityScript.findCost("Blacksmith");

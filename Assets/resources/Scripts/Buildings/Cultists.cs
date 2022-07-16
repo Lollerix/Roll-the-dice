@@ -5,7 +5,9 @@ using UnityEngine;
 public class Cultists : Building
 {
     private bool manned = false;
-    
+    new string buildingName = "Cultist quarter";
+
+    // Start is called before the first frame update
     void Start()
     {
     ItemCostClass item = utilityScript.findCost("Cult");

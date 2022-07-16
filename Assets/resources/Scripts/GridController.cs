@@ -15,7 +15,8 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tile hoverTile = null;
     private GameManager gm;
     public GameObject buildingObject = null;
-    public Building buildingTile = null;
+    [HideInInspector] public Building buildingTile = null;
+    public Tile openTerrain;
 
 
     private Vector3Int previousMousePos = new Vector3Int();
@@ -23,6 +24,7 @@ public class GridController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         grid = gameObject.GetComponent<Grid>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -34,7 +36,6 @@ public class GridController : MonoBehaviour
         Vector3Int mousePos = GetMousePosition();
         if (!mousePos.Equals(previousMousePos))
         {
-            mousePos = new Vector3Int(mousePos.x, mousePos.y, 1);
             interactive.SetTile(previousMousePos, null); // Remove old hoverTile
             interactive.SetTile(mousePos, hoverTile);
             previousMousePos = mousePos;
@@ -43,10 +44,8 @@ public class GridController : MonoBehaviour
         // Left mouse click -> add path tile
         if (Input.GetMouseButton(0) && !IsOverUI())
         {
-            if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(buildingTile.displayImage))
+            if (buildings.GetTile(mousePos) == null && map.GetTile(mousePos).Equals(openTerrain))
             {
-                Debug.Log(mousePos);
-                Debug.Log(grid.CellToLocal(mousePos));
                 Build(grid.CellToLocal(mousePos));
             }
         }
@@ -68,7 +67,6 @@ public class GridController : MonoBehaviour
     {
         if (buildingTile.lumberCost <= gm.lumberCount && buildingTile.coinCost <= gm.coinCount)
         {
-            Debug.Log(buildingTile.lumberCost);
             gm.lumberCount -= buildingTile.lumberCost; gm.coinCount -= buildingTile.coinCost;
             buildings.SetTile(grid.WorldToCell(mousePos), buildingTile.displayImage);
             GameObject obj = Instantiate(buildingObject, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
@@ -79,7 +77,8 @@ public class GridController : MonoBehaviour
         Debug.Log(v);
     }
 
-    public void transformInTile(){
-                buildingTile = buildingObject.GetComponent<Building>();
+    public void transformInTile()
+    {
+        buildingTile = buildingObject.GetComponent<Building>();
     }
 }

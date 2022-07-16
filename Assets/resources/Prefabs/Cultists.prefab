@@ -105,6 +105,7 @@ MonoBehaviour:
   coinCost: 0
   maxWorkers: 0
   workers: 0
+  buildingName: Cultist quarters
 --- !u!61 &8626898072744280387
 BoxCollider2D:
   m_ObjectHideFlags: 0

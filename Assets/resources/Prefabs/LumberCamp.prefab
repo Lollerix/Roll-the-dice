@@ -105,6 +105,7 @@ MonoBehaviour:
   coinCost: 0
   maxWorkers: 0
   workers: 0
+  buildingName: Lumber Camp
 --- !u!61 &6897936293096822205
 BoxCollider2D:
   m_ObjectHideFlags: 0

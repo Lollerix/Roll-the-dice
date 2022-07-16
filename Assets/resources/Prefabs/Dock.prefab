@@ -105,6 +105,7 @@ MonoBehaviour:
   coinCost: 0
   maxWorkers: 0
   workers: 0
+  buildingName: Docks
 --- !u!61 &7912637351226575645
 BoxCollider2D:
   m_ObjectHideFlags: 0
