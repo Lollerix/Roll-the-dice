@@ -14,7 +14,7 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
     private GameManager gm;
-    public GameObject buildingObj = null;
+    public GameObject buildingObject = null;
     public Building buildingTile = null;
 
 
@@ -25,7 +25,7 @@ public class GridController : MonoBehaviour
     {
         grid = gameObject.GetComponent<Grid>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        buildingTile = buildingObj.GetComponent<Building>();
+        buildingTile = buildingObject.GetComponent<Building>();
     }
 
     // Update is called once per frame
@@ -72,7 +72,7 @@ public class GridController : MonoBehaviour
             Debug.Log(buildingTile.lumberCost);
             gm.lumberCount -= buildingTile.lumberCost; gm.coinCount -= buildingTile.coinCost;
             buildings.SetTile(grid.WorldToCell(mousePos), buildingTile.displayImage);
-            GameObject obj = Instantiate(buildingObj, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
+            GameObject obj = Instantiate(buildingObject, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
         }
     }
     public void TestCall(string v)
