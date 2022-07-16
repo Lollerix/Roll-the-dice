@@ -46,8 +46,6 @@ public class GridController : MonoBehaviour
         {
             if (buildings.GetTile(mousePos) == null && map.GetTile(mousePos).Equals(openTerrain))
             {
-                Debug.Log(mousePos);
-                Debug.Log(grid.CellToLocal(mousePos));
                 Build(grid.CellToLocal(mousePos));
             }
         }
@@ -69,7 +67,6 @@ public class GridController : MonoBehaviour
     {
         if (buildingTile.lumberCost <= gm.lumberCount && buildingTile.coinCost <= gm.coinCount)
         {
-            Debug.Log(buildingTile.lumberCost);
             gm.lumberCount -= buildingTile.lumberCost; gm.coinCount -= buildingTile.coinCost;
             buildings.SetTile(grid.WorldToCell(mousePos), buildingTile.displayImage);
             GameObject obj = Instantiate(buildingObject, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
