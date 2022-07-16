@@ -5,13 +5,14 @@ using UnityEngine;
 public class Blacksmith : Building
 {
     private bool manned = false;
+    int lumberCost = 80;
+    int coinCost = 80;
+    int maxWorkers = 1;
+    int workers = 0;
     // Start is called before the first frame update
     void Start()
     {
-        lumberCost = 80;
-        coinCost = 80;
-        maxWorkers = 1;
-        workers = 0;
+
     }
 
     // Update is called once per frame
