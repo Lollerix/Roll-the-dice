@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 public class GridController : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class GridController : MonoBehaviour
         }
 
         // Left mouse click -> add path tile
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !IsOverUI())
         {
             if (buildings.GetTile(mousePos) == null || !buildings.GetTile(mousePos).Equals(pathTile.displayImage))
             {
@@ -50,6 +51,11 @@ public class GridController : MonoBehaviour
         {
             buildings.SetTile(mousePos, null);
         }
+    }
+
+    private bool IsOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     Vector3Int GetMousePosition()
