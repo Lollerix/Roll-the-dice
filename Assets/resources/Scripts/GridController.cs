@@ -66,6 +66,10 @@ public class GridController : MonoBehaviour
 
     private void Build(Vector3 mousePos)
     {
+        if (gm == null)
+        {
+            gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        }
         if (buildingTile.lumberCost <= gm.lumberCount && buildingTile.coinCost <= gm.coinCount)
         {
             gm.lumberCount -= buildingTile.lumberCost; gm.coinCount -= buildingTile.coinCost;

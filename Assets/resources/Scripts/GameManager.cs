@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        lumberCount = 50;
-        foodCount = 100;
+        lumberCount = 150;
+        foodCount = 800;
         coinCount = 100;
         workerCount = 0;
         lastTimeActive = Time.time;
@@ -43,6 +43,18 @@ public class GameManager : MonoBehaviour
             lastTimeActive = Time.time;
             productionActivated = true;
             calculateFood();
+            if (lumberCount > 999)
+            {
+                lumberCount = 999;
+            }
+            if (foodCount > 999)
+            {
+                foodCount = 999;
+            }
+            if (coinCount > 999)
+            {
+                coinCount = 999;
+            }
         }
         else
         {
@@ -65,14 +77,15 @@ public class GameManager : MonoBehaviour
                     if (famineCounter > famineTreshold)
                     {
                         t.famine = true;
-
+                        death(t);
                     }
                 }
                 else
                 {
                     t.famine = false;
-                    if (famineCounter - 1 > -30)
-                        famineCounter--;
+                    famineCounter--;
+                    if (famineCounter < workerCount * -10)
+                        famineCounter = workerCount * -10;
                 }
             }
 
@@ -82,6 +95,7 @@ public class GameManager : MonoBehaviour
     {
         t.workers--;
         workerCount--;
+        workerEmployed--;
         GameObject[] array = GameObject.FindGameObjectsWithTag("Workplace");
         GameObject elem = array[Random.Range(0, array.Length)];
         Building w = elem.GetComponent<Building>();
