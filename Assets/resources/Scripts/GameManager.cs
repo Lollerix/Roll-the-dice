@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject optionsObj;
+    public GameObject panel;
 
     public int lumberCount = 0;
     public int foodCount = 0;
@@ -22,12 +23,13 @@ public class GameManager : MonoBehaviour
     float lastEatTime;
     private bool productionActivated = false;
     private bool eating = false;
+    private bool gameStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
-        lumberCount = 150;
+        lumberCount = 220;
         foodCount = 50;
         coinCount = 100;
         workerCount = 0;
@@ -37,9 +39,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (workerCount <= 0)
+        if (!gameStarted && workerCount > 2)
         {
-            //Lose sequence
+            gameStarted = true;
+        }
+        if (workerCount <= 0 && gameStarted)
+        {
+            panel.SetActive(true);
         }
         if (Time.time - lastTimeActive >= productionTime)
         {
