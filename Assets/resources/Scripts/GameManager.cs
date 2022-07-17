@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     float lastEatTime;
     private bool productionActivated = false;
     private bool eating = false;
+    public GameObject descriptionObject;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
     public void openOptionPanel(Building building)
     {
 
+        descriptionObject.SetActive(false);
         if (optionsObj.activeSelf) closeOptionPanel(optionsObj);
         PanelManager options = optionsObj.GetComponent<PanelManager>();
         options.Initialize(building);

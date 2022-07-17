@@ -8,7 +8,7 @@ public class LumberCamp : Building
     {
         maxWorkers = 3;
         workers = 0;
-        ItemCostClass item = UtilsScript.findCost("Lumber");
+        ItemCostClass item = UtilsScript.findCost("Lumber Camp");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
         description = item.description;

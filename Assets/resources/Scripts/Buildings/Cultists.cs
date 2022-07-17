@@ -12,7 +12,7 @@ public class Cultists : Building
     {
         maxWorkers = 5;
         workers = 0;
-        ItemCostClass item = UtilsScript.findCost("Cult");
+        ItemCostClass item = UtilsScript.findCost("Dice Temple");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
         description = item.description;

@@ -17,6 +17,8 @@ public class ScrollableScript : MonoBehaviour
     private UtilsScript utilityScript;
     private GameObject lastHighlightedButton;
 
+    public GameObject descriptionObject;
+
     void Start()
     {
         gridControllerScript = GameObject.Find("Grid").GetComponent<GridController>();
@@ -80,7 +82,15 @@ public class ScrollableScript : MonoBehaviour
         GameObject instanciatedBorder = Instantiate(borderForButton, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
         instanciatedBorder.transform.SetParent(selectedButton.transform, false);
         lastHighlightedButton = selectedButton;
-        //MostraInfo()
+        MostraInfo(buttonName);
+    }
+
+    private void MostraInfo(string buttonName)
+    {
+        ItemCostClass itemCostClass = UtilsScript.findCost(buttonName);
+        String itemDescription = itemCostClass.description;
+        descriptionObject.SetActive(true);
+        descriptionObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = itemDescription;
     }
 
     private void buttonDehighlightMe(GameObject lastHighlightedButton)
@@ -140,6 +150,7 @@ public class ScrollableScript : MonoBehaviour
 
     public void returnToBaseOption()
     {
+        descriptionObject.SetActive(false);
         this.transform.parent.transform.parent.gameObject.SetActive(false);
     }
 
