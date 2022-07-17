@@ -15,6 +15,7 @@ public class Building : MonoBehaviour
     public string buildingName;
     bool mouseOver = false;
     Vector3 mousePos;
+    public string description;
 
     private GameObject utilsScriptObject;
     public UtilsScript utilityScript;

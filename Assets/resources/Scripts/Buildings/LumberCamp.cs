@@ -11,6 +11,8 @@ public class LumberCamp : Building
         ItemCostClass item = UtilsScript.findCost("Lumber");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
+        description = item.description;
+
     }
 
 

@@ -11,6 +11,8 @@ public class Farm : Building
         ItemCostClass item = UtilsScript.findCost("Farm");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
+        description = item.description;
+
     }
 
 

@@ -15,6 +15,8 @@ public class Cultists : Building
         ItemCostClass item = UtilsScript.findCost("Cult");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
+        description = item.description;
+
     }
 
     // Update is called once per frame

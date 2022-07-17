@@ -20,7 +20,7 @@ public class UtilsScript : MonoBehaviour
                 return item;
             }
         }
-        return new ItemCostClass("ERROR", 999, 999);
+        return new ItemCostClass("ERROR", 999, 999, "ERROR");
     }
 
 }
