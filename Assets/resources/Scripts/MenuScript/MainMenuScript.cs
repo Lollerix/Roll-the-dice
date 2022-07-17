@@ -8,7 +8,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene("MainMap", LoadSceneMode.Single);
     }
 
     public void Option()
