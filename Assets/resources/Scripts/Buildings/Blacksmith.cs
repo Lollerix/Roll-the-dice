@@ -13,6 +13,8 @@ public class Blacksmith : Building
         ItemCostClass item = UtilsScript.findCost("Blacksmith");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
+        description = item.description;
+
     }
 
     // Update is called once per frame

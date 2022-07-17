@@ -11,6 +11,8 @@ public class Dock : Building
         ItemCostClass item = UtilsScript.findCost("Dock");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
+        description = item.description;
+
     }
 
     // Update is called once per frame

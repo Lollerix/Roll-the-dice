@@ -9,6 +9,8 @@ public class Fortress : Building
         ItemCostClass item = UtilsScript.findCost("Fortress");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
+        description = "This is a fortress." + System.Environment.NewLine + "Coming soon...";
+
     }
 
 

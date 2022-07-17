@@ -80,6 +80,7 @@ public class ScrollableScript : MonoBehaviour
         GameObject instanciatedBorder = Instantiate(borderForButton, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
         instanciatedBorder.transform.SetParent(selectedButton.transform, false);
         lastHighlightedButton = selectedButton;
+        //MostraInfo()
     }
 
     private void buttonDehighlightMe(GameObject lastHighlightedButton)

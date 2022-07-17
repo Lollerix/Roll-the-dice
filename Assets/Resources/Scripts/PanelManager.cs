@@ -20,6 +20,7 @@ public class PanelManager : MonoBehaviour
     private int maxWorkers;
     private int workers;
     private Building building;
+    public TMP_Text description;
 
     public void Start()
     {
@@ -45,9 +46,19 @@ public class PanelManager : MonoBehaviour
         }
         dieBase = wm.getBaseMax();
         dieMax = wm.getDieMax();
-        minRangeTxt.text = (workers * dieBase).ToString();
-        maxRangeTxt.text = (workers * dieMax).ToString();
+
+        if (building.buildingName.Equals("House")){
+            minRangeTxt.text = workers.ToString();
+            maxRangeTxt.text = workers.ToString();
+        }
+        else
+        {
+            minRangeTxt.text = (workers * dieBase).ToString();
+            maxRangeTxt.text = (workers * dieMax).ToString();
+        }
+        
         titleTxt.text = building.buildingName;
+        description.text = building.description;
     }
     public void Update()
     {
@@ -69,11 +80,19 @@ public class PanelManager : MonoBehaviour
         {
             wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
         }
+        
         dieBase = wm.getBaseMax() * workers;
         dieMax = wm.getDieMax() * workers;
 
-        minRangeTxt.text = (dieBase).ToString();
-        maxRangeTxt.text = (dieMax + dieBase).ToString();
+        if (building.buildingName.Equals("House")){
+            minRangeTxt.text = workers.ToString();
+            maxRangeTxt.text = workers.ToString();
+        }
+        else
+        {
+            minRangeTxt.text = (workers * dieBase).ToString();
+            maxRangeTxt.text = (workers * dieMax).ToString();
+        }
     }
 
     public void IncreaseWorkers()

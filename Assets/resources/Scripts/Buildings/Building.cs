@@ -16,6 +16,7 @@ public class Building : MonoBehaviour
     public AudioClip buildingSound;
     bool mouseOver = false;
     Vector3 mousePos;
+    public string description;
 
     private GameObject utilsScriptObject;
     public UtilsScript utilityScript;
