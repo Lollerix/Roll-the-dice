@@ -22,7 +22,6 @@ public class LumberCamp : Building
             if (mainManager.getProduction())
             {
                 int lumber = Working();
-                Debug.Log(lumber);
                 mainManager.lumberCount += lumber;
             }
         }

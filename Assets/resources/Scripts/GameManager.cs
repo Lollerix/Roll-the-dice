@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int coinCount = 0;
     private int foodReq = 2;
     [SerializeField] private int famineCounter = 0;
+    private int famineTreshold = 50;
     float productionTime = 1.3f;
     float lastTimeActive;
     private bool productionActivated = false;
@@ -52,19 +53,16 @@ public class GameManager : MonoBehaviour
     private void calculateFood()
     {
         GameObject[] array = GameObject.FindGameObjectsWithTag("House");
-        Debug.Log(array.Length);
         if (array.Length != 0)
         {
             foreach (GameObject x in array)
             {
-                Debug.Log(x);
                 House t = x.GetComponent<House>();
-                Debug.Log(t);
                 foodCount -= (t.workers * foodReq);
                 if (foodCount < 0)
                 {
                     famineCounter++;
-                    if (famineCounter > 10)
+                    if (famineCounter > famineTreshold)
                     {
                         t.famine = true;
                         t.workers--;

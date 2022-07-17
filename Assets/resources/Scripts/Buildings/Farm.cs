@@ -22,7 +22,6 @@ public class Farm : Building
             if (mainManager.getProduction())
             {
                 int food = Working();
-                Debug.Log(food);
                 mainManager.foodCount += food;
             }
         }

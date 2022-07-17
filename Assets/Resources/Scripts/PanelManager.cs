@@ -14,6 +14,7 @@ public class PanelManager : MonoBehaviour
     public TMP_Text minRangeTxt;
     public TMP_Text maxRangeTxt;
     private GameManager gm;
+    private WorkManager wm;
     private int dieBase;
     private int dieMax;
     private int maxWorkers;
@@ -23,7 +24,7 @@ public class PanelManager : MonoBehaviour
     public void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        WorkManager wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
+        wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
         dieBase = wm.getBaseMax();
         dieMax = wm.getDieMax();
     }
@@ -37,9 +38,16 @@ public class PanelManager : MonoBehaviour
         {
             dice[i].Restart();
         }
+        if (wm == null)
+        {
+            wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
+        }
+        dieBase = wm.getBaseMax();
+        dieMax = wm.getDieMax();
         minRangeTxt.text = (workers * dieBase).ToString();
         maxRangeTxt.text = (workers * dieMax).ToString();
         titleTxt.text = building.buildingName;
+        Debug.Log(dieBase + " " + dieMax);
     }
     public void Update()
     {
@@ -59,10 +67,17 @@ public class PanelManager : MonoBehaviour
                 if (dice[i].play)
                     dice[i].Stop();
             }
-            minRangeTxt.text = (workers * dieBase).ToString();
-            maxRangeTxt.text = (workers * dieMax).ToString();
 
         }
+        if (wm == null)
+        {
+            wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
+        }
+        dieBase = wm.getBaseMax() * workers;
+        dieMax = wm.getDieMax() * workers;
+
+        minRangeTxt.text = (dieBase).ToString();
+        maxRangeTxt.text = (dieMax + dieBase).ToString();
     }
 
     public void IncreaseWorkers()
