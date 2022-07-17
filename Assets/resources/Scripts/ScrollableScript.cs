@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ScrollableScript : MonoBehaviour
 {
     public List<Button> buttons;
-    public GridController gridControllerScript;
+    private GridController gridControllerScript;
     RectTransform rectTransform;
     private int lumberCost;
     private int moneyCost;
@@ -17,6 +17,7 @@ public class ScrollableScript : MonoBehaviour
     private UtilsScript utilityScript;
     void Start()
     {
+        gridControllerScript = GameObject.Find("Grid").GetComponent<GridController>();
         utilsScriptObject = GameObject.Find("UtilityScript");
         utilityScript = utilsScriptObject.GetComponent<UtilsScript>();
 
@@ -27,13 +28,13 @@ public class ScrollableScript : MonoBehaviour
             btn.onClick.AddListener(() => ButtonClicked(btn.name));
         }
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         addButton("Blacksmith");
         addButton("Farm");
         addButton("House");
         addButton("Lumber");
         addButton("Cult");
-        #endif
+#endif
 
 
 
@@ -78,7 +79,7 @@ public class ScrollableScript : MonoBehaviour
         switch (name)
         {
             case "Blacksmith":
-                button = (Button)Resources.Load("Prefabs/Buttons/Blacksmith", typeof(Button));break;
+                button = (Button)Resources.Load("Prefabs/Buttons/Blacksmith", typeof(Button)); break;
 
             case "Lumber":
                 button = (Button)Resources.Load("Prefabs/Buttons/Lumber", typeof(Button)); break;
@@ -94,21 +95,21 @@ public class ScrollableScript : MonoBehaviour
             default:
                 gridControllerScript.TestCall("Sono in default");
                 Debug.LogError("Selezionato edificio non riconosciuto");
-                button = (Button)Resources.Load("Prefabs/Buttons/House", typeof(Button)); 
+                button = (Button)Resources.Load("Prefabs/Buttons/House", typeof(Button));
                 break;
         }
 
-        ItemCostClass itemCostClass = utilityScript.findCost(name);
+        ItemCostClass itemCostClass = UtilsScript.findCost(name);
         lumberCost = itemCostClass.lumberCost;
         moneyCost = itemCostClass.moneyCost;
 
-        Button instanciatedButton = Instantiate(button, new Vector3(0,0,0), new Quaternion(0,0,0,0));
+        Button instanciatedButton = Instantiate(button, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
         instanciatedButton.transform.SetParent(gameObject.transform, false);
         instanciatedButton.onClick.AddListener(() => ButtonClicked(button.name));
         buttons.Add(instanciatedButton);
 
-        rectTransform.sizeDelta += new Vector2(0,50);
-        rectTransform.position -= new Vector3(0,25);
+        rectTransform.sizeDelta += new Vector2(0, 50);
+        rectTransform.position -= new Vector3(0, 25);
 
 
 
@@ -118,7 +119,8 @@ public class ScrollableScript : MonoBehaviour
 
     }
 
-    public void returnToBaseOption(){
+    public void returnToBaseOption()
+    {
         this.transform.parent.transform.parent.gameObject.SetActive(false);
     }
 

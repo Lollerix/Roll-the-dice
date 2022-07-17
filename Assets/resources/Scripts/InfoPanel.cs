@@ -6,9 +6,9 @@ using UnityEngine;
 public class InfoPanel : MonoBehaviour
 {
     private List<TextMeshProUGUI> list = new List<TextMeshProUGUI>();
-    public GameObject gameManagerObject;
+    private GameObject gameManagerObject;
     private GameManager gameManager;
- private void AddDescendantsWithTag(Transform parent, string tag)
+    private void AddDescendantsWithTag(Transform parent, string tag)
     {
         foreach (Transform child in parent)
         {
@@ -18,14 +18,16 @@ public class InfoPanel : MonoBehaviour
             }
         }
     }
- 
+
     void Start()
     {
         AddDescendantsWithTag(transform, "Text");
+        gameManagerObject = GameObject.Find("GameManager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
     }
 
-    void Update(){
+    void Update()
+    {
         list[0].SetText(gameManager.lumberCount.ToString());
         list[1].SetText(gameManager.coinCount.ToString());
         list[2].SetText(gameManager.workerEmployed.ToString());

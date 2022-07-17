@@ -72,7 +72,8 @@ public class GridController : MonoBehaviour
         }
         if (buildingTile.lumberCost <= gm.lumberCount && buildingTile.coinCost <= gm.coinCount)
         {
-            gm.lumberCount -= buildingTile.lumberCost; gm.coinCount -= buildingTile.coinCost;
+            gm.lumberCount -= UtilsScript.findCost(buildingTile.buildingName).lumberCost;
+            gm.coinCount -= UtilsScript.findCost(buildingTile.buildingName).moneyCost;
             buildings.SetTile(grid.WorldToCell(mousePos), buildingTile.displayImage);
             GameObject obj = Instantiate(buildingObject, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
         }

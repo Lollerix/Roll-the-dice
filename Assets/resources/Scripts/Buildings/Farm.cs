@@ -8,7 +8,7 @@ public class Farm : Building
     {
         maxWorkers = 2;
         workers = 0;
-        ItemCostClass item = utilityScript.findCost("Farm");
+        ItemCostClass item = UtilsScript.findCost("Farm");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
     }

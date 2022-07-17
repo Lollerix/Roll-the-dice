@@ -9,7 +9,7 @@ public class House : Building
     {
         maxWorkers = 4;
         workers = 0;
-        ItemCostClass item = utilityScript.findCost("House");
+        ItemCostClass item = UtilsScript.findCost("House");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
     }
