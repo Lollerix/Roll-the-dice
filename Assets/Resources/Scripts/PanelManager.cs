@@ -90,6 +90,7 @@ public class PanelManager : MonoBehaviour
     }
     public void DecreaseWorkers()
     {
+        if (building.buildingName == "House") return;
         if (workers - 1 < 0) return;
         workers--;
         building.workers--;
