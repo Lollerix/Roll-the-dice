@@ -99,12 +99,12 @@ public class GridController : MonoBehaviour
         isBuildingActive = boolean;
         if (boolean == false)
         {
-            UnityEngine.Cursor.SetCursor(cursorSword, Vector2.zero, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(cursorSword, Vector2.zero , CursorMode.Auto);
             buildingTile = null;
         }
         else
         {
-            UnityEngine.Cursor.SetCursor(cursorHammer, Vector2.zero, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(cursorHammer,new Vector2(2,3), CursorMode.Auto);
         }
     }
 }
