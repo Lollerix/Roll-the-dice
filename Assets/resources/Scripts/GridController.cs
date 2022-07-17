@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+
 using System;
 
 public class GridController : MonoBehaviour
@@ -13,6 +14,9 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap buildings = null;
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
+    [SerializeField] private Texture2D cursorSword;
+
+    [SerializeField] private Texture2D cursorHammer;
     private GameManager gm;
     public GameObject buildingObject = null;
     [HideInInspector] public Building buildingTile = null;
@@ -25,7 +29,6 @@ public class GridController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         grid = gameObject.GetComponent<Grid>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -96,7 +99,12 @@ public class GridController : MonoBehaviour
         isBuildingActive = boolean;
         if (boolean == false)
         {
+            UnityEngine.Cursor.SetCursor(cursorSword, Vector2.zero, CursorMode.Auto);
             buildingTile = null;
+        }
+        else
+        {
+            UnityEngine.Cursor.SetCursor(cursorHammer, Vector2.zero, CursorMode.Auto);
         }
     }
 }

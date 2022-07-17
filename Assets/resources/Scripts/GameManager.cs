@@ -130,6 +130,9 @@ public class GameManager : MonoBehaviour
 
     public void loadScene(int i)
     {
+        if (i == 0)
+            UnityEngine.Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
         SceneManager.LoadScene(i, LoadSceneMode.Single);
     }
 }
