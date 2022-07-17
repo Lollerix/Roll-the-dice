@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    [SerializeField] private Texture2D cursorSword;
 
     public void StartNewGame()
     {
-        UnityEngine.Cursor.SetCursor(cursorSword, Vector2.zero, CursorMode.Auto);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 

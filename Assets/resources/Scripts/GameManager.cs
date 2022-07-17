@@ -22,14 +22,10 @@ public class GameManager : MonoBehaviour
     float lastEatTime;
     private bool productionActivated = false;
     private bool eating = false;
-    private Texture2D knifeCursor;
 
     // Start is called before the first frame update
     void Start()
     {
-        knifeCursor = (Texture2D)Resources.Load("CursorIcons/SwordCursor", typeof(Texture2D));
-        Debug.Log(knifeCursor);
-        Cursor.SetCursor(knifeCursor, Vector2.zero, CursorMode.Auto);
         lumberCount = 150;
         foodCount = 50;
         coinCount = 100;

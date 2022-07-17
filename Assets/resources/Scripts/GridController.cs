@@ -14,7 +14,6 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap buildings = null;
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
-    [SerializeField] private Texture2D cursorSword;
 
     [SerializeField] private Texture2D cursorHammer;
     private GameManager gm;
@@ -99,7 +98,7 @@ public class GridController : MonoBehaviour
         isBuildingActive = boolean;
         if (boolean == false)
         {
-            UnityEngine.Cursor.SetCursor(cursorSword, Vector2.zero, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             buildingTile = null;
         }
         else
