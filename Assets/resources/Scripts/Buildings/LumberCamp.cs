@@ -6,9 +6,11 @@ public class LumberCamp : Building
 {
     void Start()
     {
-    ItemCostClass item = utilityScript.findCost("Lumber");
-    lumberCost = item.lumberCost;
-    coinCost = item.moneyCost;
+        maxWorkers = 3;
+        workers = 0;
+        ItemCostClass item = utilityScript.findCost("Lumber");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
 

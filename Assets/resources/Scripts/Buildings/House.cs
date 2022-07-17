@@ -7,9 +7,11 @@ public class House : Building
     public bool famine = false;
     void Start()
     {
-    ItemCostClass item = utilityScript.findCost("House");
-    lumberCost = item.lumberCost;
-    coinCost = item.moneyCost;
+        maxWorkers = 4;
+        workers = 0;
+        ItemCostClass item = utilityScript.findCost("House");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
     // Update is called once per frame

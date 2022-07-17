@@ -6,9 +6,11 @@ public class Dock : Building
 {
     void Start()
     {
-    ItemCostClass item = utilityScript.findCost("Dock");
-    lumberCost = item.lumberCost;
-    coinCost = item.moneyCost;
+        maxWorkers = 5;
+        workers = 0;
+        ItemCostClass item = utilityScript.findCost("Dock");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
     // Update is called once per frame

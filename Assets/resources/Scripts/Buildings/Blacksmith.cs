@@ -8,9 +8,11 @@ public class Blacksmith : Building
     // Start is called before the first frame update
     void Start()
     {
-    ItemCostClass item = utilityScript.findCost("Blacksmith");
-    lumberCost = item.lumberCost;
-    coinCost = item.moneyCost;
+        maxWorkers = 2;
+        workers = 0;
+        ItemCostClass item = utilityScript.findCost("Blacksmith");
+        lumberCost = item.lumberCost;
+        coinCost = item.moneyCost;
     }
 
     // Update is called once per frame
