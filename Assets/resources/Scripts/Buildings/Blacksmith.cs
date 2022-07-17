@@ -10,7 +10,7 @@ public class Blacksmith : Building
     {
         maxWorkers = 2;
         workers = 0;
-        ItemCostClass item = utilityScript.findCost("Blacksmith");
+        ItemCostClass item = UtilsScript.findCost("Blacksmith");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
     }

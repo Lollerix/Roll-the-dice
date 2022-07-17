@@ -19,8 +19,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int famineCounter = 0;
     private int famineTreshold = 50;
     float productionTime = 1.3f;
+    float eatTime = 2.6f;
     float lastTimeActive;
+    float lastEatTime;
     private bool productionActivated = false;
+    private bool eating = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,7 @@ public class GameManager : MonoBehaviour
         coinCount = 100;
         workerCount = 0;
         lastTimeActive = Time.time;
+        lastEatTime = lastTimeActive;
     }
 
     void Update()
@@ -42,24 +46,17 @@ public class GameManager : MonoBehaviour
         {
             lastTimeActive = Time.time;
             productionActivated = true;
-            calculateFood();
-            if (lumberCount > 999)
+            if (Time.time - lastEatTime >= eatTime)
             {
-                lumberCount = 999;
-            }
-            if (foodCount > 999)
-            {
-                foodCount = 999;
-            }
-            if (coinCount > 999)
-            {
-                coinCount = 999;
+                lastEatTime = Time.time;
+                calculateFood();
             }
         }
         else
         {
             productionActivated = false;
         }
+
     }
 
     private void calculateFood()
@@ -71,7 +68,7 @@ public class GameManager : MonoBehaviour
             {
                 House t = x.GetComponent<House>();
                 foodCount -= (t.workers * foodReq);
-                if (foodCount < 0)
+                if (foodCount <= 0)
                 {
                     famineCounter++;
                     if (famineCounter > famineTreshold)
@@ -79,6 +76,7 @@ public class GameManager : MonoBehaviour
                         t.famine = true;
                         death(t);
                     }
+                    if (foodCount < -30) foodCount = -30;
                 }
                 else
                 {
@@ -121,5 +119,9 @@ public class GameManager : MonoBehaviour
     public bool getProduction()
     {
         return productionActivated;
+    }
+    public bool getEatTime()
+    {
+        return eating;
     }
 }

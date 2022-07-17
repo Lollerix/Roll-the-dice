@@ -30,7 +30,8 @@ public class Building : MonoBehaviour
 
     public virtual int Working()
     {
-        return Random.Range((workManager.getBaseMax() * workers), (workManager.getDieMax() * workers));
+        return Random.Range((workManager.getBaseMax() * workers),
+         (workManager.getDieMax() * workers) + workManager.getBaseMax());
     }
     private void OnMouseOver()
     {

@@ -8,7 +8,7 @@ public class Farm : Building
     {
         maxWorkers = 2;
         workers = 0;
-        ItemCostClass item = utilityScript.findCost("Farm");
+        ItemCostClass item = UtilsScript.findCost("Farm");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
     }
@@ -23,6 +23,10 @@ public class Farm : Building
             {
                 int food = Working();
                 mainManager.foodCount += food;
+                if (mainManager.foodCount > 999)
+                {
+                    mainManager.foodCount = 999;
+                }
             }
         }
     }

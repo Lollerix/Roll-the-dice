@@ -8,7 +8,7 @@ public class Dock : Building
     {
         maxWorkers = 5;
         workers = 0;
-        ItemCostClass item = utilityScript.findCost("Dock");
+        ItemCostClass item = UtilsScript.findCost("Dock");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
     }
@@ -22,6 +22,10 @@ public class Dock : Building
             {
                 int coin = Working();
                 mainManager.coinCount += coin;
+                if (mainManager.coinCount > 999)
+                {
+                    mainManager.coinCount = 999;
+                }
             }
         }
     }

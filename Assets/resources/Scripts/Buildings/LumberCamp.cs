@@ -8,7 +8,7 @@ public class LumberCamp : Building
     {
         maxWorkers = 3;
         workers = 0;
-        ItemCostClass item = utilityScript.findCost("Lumber");
+        ItemCostClass item = UtilsScript.findCost("Lumber");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
     }
@@ -23,6 +23,11 @@ public class LumberCamp : Building
             {
                 int lumber = Working();
                 mainManager.lumberCount += lumber;
+
+                if (mainManager.lumberCount > 999)
+                {
+                    mainManager.lumberCount = 999;
+                }
             }
         }
     }
