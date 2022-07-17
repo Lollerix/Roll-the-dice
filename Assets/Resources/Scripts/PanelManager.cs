@@ -48,7 +48,6 @@ public class PanelManager : MonoBehaviour
         minRangeTxt.text = (workers * dieBase).ToString();
         maxRangeTxt.text = (workers * dieMax).ToString();
         titleTxt.text = building.buildingName;
-        Debug.Log(dieBase + " " + dieMax);
     }
     public void Update()
     {
@@ -62,10 +61,9 @@ public class PanelManager : MonoBehaviour
             if (!dice[i].play)
                 dice[i].Restart();
         }
-        for (; i < maxWorkers; i++)
+        for (; i < 5; i++)
         {
-            if (dice[i].play)
-                dice[i].Stop();
+            dice[i].Stop();
         }
         if (wm == null)
         {

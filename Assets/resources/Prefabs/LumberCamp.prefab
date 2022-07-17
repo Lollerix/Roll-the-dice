@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6897936293096822205}
   m_Layer: 7
   m_Name: LumberCamp
-  m_TagString: Lumber
+  m_TagString: Workplace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   maxWorkers: 0
   workers: 0
   buildingName: Lumber Camp
+  utilityScript: {fileID: 0}
 --- !u!61 &6897936293096822205
 BoxCollider2D:
   m_ObjectHideFlags: 0

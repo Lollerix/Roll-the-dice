@@ -65,10 +65,7 @@ public class GameManager : MonoBehaviour
                     if (famineCounter > famineTreshold)
                     {
                         t.famine = true;
-                        t.workers--;
-                        workerCount--;
-                        if (workerCount < 0) workerCount = 0;
-                        if (t.workers < 0) t.workers = 0;
+
                     }
                 }
                 else
@@ -80,6 +77,17 @@ public class GameManager : MonoBehaviour
             }
 
         }
+    }
+    private void death(House t)
+    {
+        t.workers--;
+        workerCount--;
+        GameObject[] array = GameObject.FindGameObjectsWithTag("Workplace");
+        GameObject elem = array[Random.Range(0, array.Length)];
+        Building w = elem.GetComponent<Building>();
+        w.workers--;
+        if (workerCount < 0) workerCount = 0;
+        if (t.workers < 0) t.workers = 0;
     }
 
     public void openOptionPanel(Building building)
