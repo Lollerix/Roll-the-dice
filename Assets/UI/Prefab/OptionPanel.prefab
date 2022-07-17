@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5139169248737488653
 RectTransform:
   m_ObjectHideFlags: 0
@@ -429,9 +429,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ffb7daf528332dc41ba524d54a2391de, type: 3}
   - {fileID: 21300000, guid: 69d15c786a445aa47985e59510080e66, type: 3}
   spritePerFrame: 20
-  loop: 0
+  loop: 1
   destroyOnEnd: 0
-  play: 0
+  play: 1
 --- !u!1 &5139169249037979386
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,9 +829,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ffb7daf528332dc41ba524d54a2391de, type: 3}
   - {fileID: 21300000, guid: 69d15c786a445aa47985e59510080e66, type: 3}
   spritePerFrame: 20
-  loop: 0
+  loop: 1
   destroyOnEnd: 0
-  play: 0
+  play: 1
 --- !u!1 &5139169249513449896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,9 +1994,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ffb7daf528332dc41ba524d54a2391de, type: 3}
   - {fileID: 21300000, guid: 69d15c786a445aa47985e59510080e66, type: 3}
   spritePerFrame: 20
-  loop: 0
+  loop: 1
   destroyOnEnd: 0
-  play: 0
+  play: 1
 --- !u!1 &5139169250491178646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,9 +2229,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ffb7daf528332dc41ba524d54a2391de, type: 3}
   - {fileID: 21300000, guid: 69d15c786a445aa47985e59510080e66, type: 3}
   spritePerFrame: 20
-  loop: 0
+  loop: 1
   destroyOnEnd: 0
-  play: 0
+  play: 1
 --- !u!1 &5139169250539453588
 GameObject:
   m_ObjectHideFlags: 0

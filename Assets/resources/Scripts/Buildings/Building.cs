@@ -46,7 +46,7 @@ public class Building : MonoBehaviour
     private void OnGUI()
     {
 
-        if (mouseOver && Input.GetMouseButton(1))
+        if (mouseOver && Input.GetMouseButtonDown(1))
         {
             mainManager.openOptionPanel(this);
         }

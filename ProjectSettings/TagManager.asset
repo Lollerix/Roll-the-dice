@@ -11,6 +11,7 @@ TagManager:
   - Cult
   - Fortress
   - Dock
+  - Text
   layers:
   - Default
   - TransparentFX
