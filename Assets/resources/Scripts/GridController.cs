@@ -103,7 +103,7 @@ public class GridController : MonoBehaviour
         }
         else
         {
-            UnityEngine.Cursor.SetCursor(cursorHammer, Vector2.zero, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(cursorHammer,new Vector2(2,3), CursorMode.Auto);
         }
     }
 }

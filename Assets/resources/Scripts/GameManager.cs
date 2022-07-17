@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         lumberCount = 150;
         foodCount = 50;
         coinCount = 100;
