@@ -44,19 +44,20 @@ public class PanelManager : MonoBehaviour
         {
             wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
         }
-        dieBase = wm.getBaseMax();
-        dieMax = wm.getDieMax();
+        dieBase = wm.getBaseMax() * workers;
+        dieMax = wm.getDieMax() * workers;
 
-        if (building.buildingName.Equals("House")){
+        if (building.buildingName.Equals("House"))
+        {
             minRangeTxt.text = workers.ToString();
             maxRangeTxt.text = workers.ToString();
         }
         else
         {
-            minRangeTxt.text = (workers * dieBase).ToString();
-            maxRangeTxt.text = (workers * dieMax).ToString();
+            minRangeTxt.text = dieBase.ToString();
+            maxRangeTxt.text = (dieMax + dieBase).ToString();
         }
-        
+
         titleTxt.text = building.buildingName;
         description.text = building.description;
     }
@@ -80,18 +81,19 @@ public class PanelManager : MonoBehaviour
         {
             wm = GameObject.Find("WorkManager").GetComponent<WorkManager>();
         }
-        
+
         dieBase = wm.getBaseMax() * workers;
         dieMax = wm.getDieMax() * workers;
 
-        if (building.buildingName.Equals("House")){
+        if (building.buildingName.Equals("House"))
+        {
             minRangeTxt.text = workers.ToString();
             maxRangeTxt.text = workers.ToString();
         }
         else
         {
-            minRangeTxt.text = (workers * dieBase).ToString();
-            maxRangeTxt.text = (workers * dieMax).ToString();
+            minRangeTxt.text = dieBase.ToString();
+            maxRangeTxt.text = (dieMax + dieBase).ToString();
         }
     }
 

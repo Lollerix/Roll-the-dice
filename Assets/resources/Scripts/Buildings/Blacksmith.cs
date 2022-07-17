@@ -8,7 +8,7 @@ public class Blacksmith : Building
     // Start is called before the first frame update
     void Start()
     {
-        maxWorkers = 2;
+        maxWorkers = 1;
         workers = 0;
         ItemCostClass item = UtilsScript.findCost("Blacksmith");
         lumberCost = item.lumberCost;

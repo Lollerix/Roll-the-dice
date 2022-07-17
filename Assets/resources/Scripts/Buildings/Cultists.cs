@@ -10,7 +10,7 @@ public class Cultists : Building
     // Start is called before the first frame update
     void Start()
     {
-        maxWorkers = 5;
+        maxWorkers = 1;
         workers = 0;
         ItemCostClass item = UtilsScript.findCost("Dice Temple");
         lumberCost = item.lumberCost;
@@ -25,13 +25,13 @@ public class Cultists : Building
         if (workers > 0 && !manned)
         {
             manned = true;
-            workManager.IncreaseDie(1);
+            workManager.IncreaseDie(2);
             Debug.Log("Die increased by " + workManager.getDieMax());
         }
         if (workers == 0 && manned)
         {
             manned = false;
-            workManager.IncreaseDie(-1);
+            workManager.IncreaseDie(-2);
             Debug.Log(workManager.getDieMax());
         }
     }

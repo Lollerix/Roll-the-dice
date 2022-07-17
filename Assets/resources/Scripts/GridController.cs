@@ -47,7 +47,7 @@ public class GridController : MonoBehaviour
         // Left mouse click -> add path tile
         if (Input.GetMouseButtonDown(0) && !IsOverUI() && isBuildingActive)
         {
-            if (buildings.GetTile(mousePos) == null && map.GetTile(mousePos).Equals(openTerrain))
+            if (buildingTile && buildings.GetTile(mousePos) == null && map.GetTile(mousePos).Equals(openTerrain))
             {
                 Build(grid.CellToLocal(mousePos));
             }

@@ -99,12 +99,14 @@ public class GameManager : MonoBehaviour
     private void death(House t)
     {
         GameObject[] array = GameObject.FindGameObjectsWithTag("Workplace");
-        GameObject elem = array[Random.Range(0, array.Length)];
-        Building w = elem.GetComponent<Building>();
+        Debug.Log(array.Length);
         t.workers--;
         if (t.workers < 0) { t.workers = 0; }
         workerCount--;
         if (workerCount < 0) { workerCount = 0; }
+        if (array.Length == 0) return;
+        GameObject elem = array[Random.Range(0, array.Length)];
+        Building w = elem.GetComponent<Building>();
         w.workers--;
         if (w.workers < 0) { w.workers = 0; }
         workerEmployed--;
