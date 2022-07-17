@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         lumberCount = 50;
         foodCount = 100;
         coinCount = 100;
-        workerCount = 3;
+        workerCount = 0;
         lastTimeActive = Time.time;
     }
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         {
             lastTimeActive = Time.time;
             productionActivated = true;
-            //calculateFood();
+            calculateFood();
         }
         else
         {
@@ -52,11 +52,14 @@ public class GameManager : MonoBehaviour
     private void calculateFood()
     {
         GameObject[] array = GameObject.FindGameObjectsWithTag("House");
+        Debug.Log(array.Length);
         if (array.Length != 0)
         {
             foreach (GameObject x in array)
             {
+                Debug.Log(x);
                 House t = x.GetComponent<House>();
+                Debug.Log(t);
                 foodCount -= (t.workers * foodReq);
                 if (foodCount < 0)
                 {
