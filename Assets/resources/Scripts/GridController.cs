@@ -81,6 +81,9 @@ public class GridController : MonoBehaviour
             gm.coinCount -= moneyCost;
             buildings.SetTile(grid.WorldToCell(mousePos), buildingTile.displayImage);
             GameObject obj = Instantiate(buildingObject, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
+            AudioSource a = gameObject.GetComponent<AudioSource>();
+            if (a.isPlaying) a.Stop();
+            a.Play();
         }
     }
     public void TestCall(string v)
@@ -103,7 +106,7 @@ public class GridController : MonoBehaviour
         }
         else
         {
-            UnityEngine.Cursor.SetCursor(cursorHammer,new Vector2(2,3), CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(cursorHammer, new Vector2(2, 3), CursorMode.Auto);
         }
     }
 }

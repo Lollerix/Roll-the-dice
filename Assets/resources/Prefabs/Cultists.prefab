@@ -106,6 +106,7 @@ MonoBehaviour:
   maxWorkers: 0
   workers: 0
   buildingName: Dice Temple
+  buildingSound: {fileID: 8300000, guid: 5fb3299f831157840a16990faf0ad5c1, type: 3}
   utilityScript: {fileID: 0}
 --- !u!61 &8626898072744280387
 BoxCollider2D:

@@ -106,6 +106,7 @@ MonoBehaviour:
   maxWorkers: 0
   workers: 0
   buildingName: Farm
+  buildingSound: {fileID: 8300000, guid: 9e540866483f55d4b9b60a3d6ce79edb, type: 3}
   utilityScript: {fileID: 0}
 --- !u!61 &-7970914392875890553
 BoxCollider2D:

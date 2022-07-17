@@ -106,6 +106,7 @@ MonoBehaviour:
   maxWorkers: 0
   workers: 0
   buildingName: Lumber Camp
+  buildingSound: {fileID: 8300000, guid: b4aec37e8b6604d48ad63a93ad63ab19, type: 3}
   utilityScript: {fileID: 0}
 --- !u!61 &6897936293096822205
 BoxCollider2D:

@@ -106,6 +106,8 @@ MonoBehaviour:
   maxWorkers: 0
   workers: 0
   buildingName: House
+  buildingSound: {fileID: 8300000, guid: a6f4dc9e8db59104999880d882821165, type: 3}
+  utilityScript: {fileID: 0}
   famine: 0
 --- !u!61 &-488430269117188618
 BoxCollider2D:
