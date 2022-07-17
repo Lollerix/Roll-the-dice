@@ -22,10 +22,14 @@ public class GridController : MonoBehaviour
 
     private Vector3Int previousMousePos = new Vector3Int();
 
+    private Texture2D knifeCursor, hammerCursor;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        hammerCursor = (Texture2D)Resources.Load("CursorIcons/HammerCursor", typeof(Texture2D));
+        knifeCursor = (Texture2D)Resources.Load("CursorIcons/SwordCursor", typeof(Texture2D));
         grid = gameObject.GetComponent<Grid>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -96,7 +100,11 @@ public class GridController : MonoBehaviour
         isBuildingActive = boolean;
         if (boolean == false)
         {
+            UnityEngine.Cursor.SetCursor(knifeCursor, Vector2.zero, CursorMode.Auto);
             buildingTile = null;
+        }
+        else{
+            UnityEngine.Cursor.SetCursor(hammerCursor, Vector2.zero, CursorMode.Auto);
         }
     }
 }
