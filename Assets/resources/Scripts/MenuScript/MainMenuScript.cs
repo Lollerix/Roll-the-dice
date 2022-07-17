@@ -8,29 +8,32 @@ public class MainMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void StartNewGame(){
-        SceneManager.LoadScene("TestingMapSte", LoadSceneMode.Single);
+    public void StartNewGame()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
-    public void Option(){
+    public void Option()
+    {
         gameObject.SetActive(false);
         transform.parent.GetChild(2).gameObject.SetActive(true);
     }
 
-    public void Exit(){
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
              Application.Quit();
-        #endif
+#endif
     }
 }
