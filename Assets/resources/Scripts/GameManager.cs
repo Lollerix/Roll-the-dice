@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public Texture2D cursorTexture;
-    public CursorMode cursorMode = CursorMode.Auto;
-    public Vector2 hotSpot = Vector2.zero;
     public GameObject optionsObj;
 
     public int lumberCount = 0;
@@ -25,10 +22,14 @@ public class GameManager : MonoBehaviour
     float lastEatTime;
     private bool productionActivated = false;
     private bool eating = false;
+    private Texture2D knifeCursor;
+
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        knifeCursor = (Texture2D)Resources.Load("CursorIcons/SwordCursor", typeof(Texture2D));
+        Debug.Log(knifeCursor);
+        Cursor.SetCursor(knifeCursor, Vector2.zero, CursorMode.Auto);
         lumberCount = 150;
         foodCount = 50;
         coinCount = 100;

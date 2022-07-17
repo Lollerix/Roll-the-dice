@@ -15,6 +15,8 @@ public class ScrollableScript : MonoBehaviour
 
     private GameObject utilsScriptObject;
     private UtilsScript utilityScript;
+    private GameObject lastHighlightedButton;
+
     void Start()
     {
         gridControllerScript = GameObject.Find("Grid").GetComponent<GridController>();
@@ -25,7 +27,7 @@ public class ScrollableScript : MonoBehaviour
         foreach (Button button in buttons)
         {
             Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(() => ButtonClicked(btn.name));
+            btn.onClick.AddListener(() => ButtonClicked(btn));
         }
         addButton("Blacksmith");
         addButton("Farm");
@@ -37,8 +39,10 @@ public class ScrollableScript : MonoBehaviour
 
     }
 
-    void ButtonClicked(string name)
+    void ButtonClicked(Button buttonClicked)
     {
+        String name = buttonClicked.name;
+        buttonHighlightMe(buttonClicked.name);
         switch (name)
         {
             case "Blacksmith":
@@ -66,6 +70,23 @@ public class ScrollableScript : MonoBehaviour
                 break;
         }
         gridControllerScript.transformInTile();
+    }
+
+    private void buttonHighlightMe(String buttonName)
+    {
+        GameObject selectedButton = transform.Find(buttonName + "(Clone)").gameObject;
+        buttonDehighlightMe(lastHighlightedButton);
+        GameObject borderForButton = (GameObject)Resources.Load("Prefabs/Buttons/BordeForBuildingButton", typeof(GameObject));
+        GameObject instanciatedBorder = Instantiate(borderForButton, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+        instanciatedBorder.transform.SetParent(selectedButton.transform, false);
+        lastHighlightedButton = selectedButton;
+    }
+
+    private void buttonDehighlightMe(GameObject lastHighlightedButton)
+    {
+        if(lastHighlightedButton != null && lastHighlightedButton.transform.childCount > 1){
+        Destroy(lastHighlightedButton.transform.GetChild(1).gameObject);
+        }
     }
 
     //Aggiunge il pulsante corrispondente al nome inserito.
@@ -102,7 +123,7 @@ public class ScrollableScript : MonoBehaviour
 
         Button instanciatedButton = Instantiate(button, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
         instanciatedButton.transform.SetParent(gameObject.transform, false);
-        instanciatedButton.onClick.AddListener(() => ButtonClicked(button.name));
+        instanciatedButton.onClick.AddListener(() => ButtonClicked(button));
         buttons.Add(instanciatedButton);
 
         rectTransform.sizeDelta += new Vector2(0, 50);
