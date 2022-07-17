@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
+
 using System;
 
 public class GridController : MonoBehaviour
@@ -13,6 +14,9 @@ public class GridController : MonoBehaviour
     [SerializeField] private Tilemap buildings = null;
     [SerializeField] private Tilemap interactive = null;
     [SerializeField] private Tile hoverTile = null;
+    [SerializeField] private Texture2D cursorSword;
+
+    [SerializeField] private Texture2D cursorHammer;
     private GameManager gm;
     public GameObject buildingObject = null;
     [HideInInspector] public Building buildingTile = null;
@@ -22,14 +26,9 @@ public class GridController : MonoBehaviour
 
     private Vector3Int previousMousePos = new Vector3Int();
 
-    private Texture2D knifeCursor, hammerCursor;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        hammerCursor = (Texture2D)Resources.Load("CursorIcons/HammerCursor", typeof(Texture2D));
-        knifeCursor = (Texture2D)Resources.Load("CursorIcons/SwordCursor", typeof(Texture2D));
         grid = gameObject.GetComponent<Grid>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -100,11 +99,12 @@ public class GridController : MonoBehaviour
         isBuildingActive = boolean;
         if (boolean == false)
         {
-            UnityEngine.Cursor.SetCursor(knifeCursor, Vector2.zero, CursorMode.Auto);
+            UnityEngine.Cursor.SetCursor(cursorSword, Vector2.zero, CursorMode.Auto);
             buildingTile = null;
         }
-        else{
-            UnityEngine.Cursor.SetCursor(hammerCursor, Vector2.zero, CursorMode.Auto);
+        else
+        {
+            UnityEngine.Cursor.SetCursor(cursorHammer, Vector2.zero, CursorMode.Auto);
         }
     }
 }

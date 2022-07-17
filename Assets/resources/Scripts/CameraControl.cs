@@ -35,9 +35,6 @@ public class CameraControl : MonoBehaviour
     void Update()
     {
         WasdMovement();
-#if !UNITY_EDITOR
-            BorderScreenMovement();
-#endif
         MmbMovement();
         ZoomMovement();
 
@@ -75,29 +72,6 @@ public class CameraControl : MonoBehaviour
             panning = false;
     }
 
-    private void BorderScreenMovement()
-    {
-        Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-        if (mousePosition.x < leftBorder)
-        {
-            transform.position = new Vector3(transform.position.x - widthBorderSpeed, transform.position.y, transform.position.z);
-        }
-        else if (mousePosition.x > rightBorder)
-        {
-            transform.position = new Vector3(transform.position.x + widthBorderSpeed, transform.position.y, transform.position.z);
-        }
-
-        if (mousePosition.y < bottomBorder)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - heightBorderSpeed, transform.position.z);
-        }
-        else if (mousePosition.y > topBorder)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y + heightBorderSpeed, transform.position.z);
-        }
-
-    }
 
     //Si occupa del movimento con wasd
     private void WasdMovement()

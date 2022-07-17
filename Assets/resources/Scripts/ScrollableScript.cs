@@ -29,14 +29,11 @@ public class ScrollableScript : MonoBehaviour
             Button btn = button.GetComponent<Button>();
             btn.onClick.AddListener(() => ButtonClicked(btn));
         }
-
-#if UNITY_EDITOR
         addButton("Blacksmith");
         addButton("Farm");
         addButton("House");
         addButton("Lumber Camp");
         addButton("Dice Temple");
-#endif
 
 
 

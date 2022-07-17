@@ -5,32 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Texture2D cursorSword;
+
+    public void StartNewGame()
     {
-        
+        UnityEngine.Cursor.SetCursor(cursorSword, Vector2.zero, CursorMode.Auto);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Option()
     {
-        
-    }
-
-    public void StartNewGame(){
-        SceneManager.LoadScene("TestingMapSte", LoadSceneMode.Single);
-    }
-
-    public void Option(){
         gameObject.SetActive(false);
         transform.parent.GetChild(2).gameObject.SetActive(true);
     }
 
-    public void Exit(){
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+    public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
              Application.Quit();
-        #endif
+#endif
     }
 }

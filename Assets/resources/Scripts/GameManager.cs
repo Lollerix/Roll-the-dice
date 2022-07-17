@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int coinCount = 0;
     private int foodReq = 2;
     [SerializeField] private int famineCounter = 0;
-    private int famineTreshold = 50;
+    private int famineTreshold = 5;
     float productionTime = 1.3f;
     float eatTime = 2.6f;
     float lastTimeActive;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(knifeCursor);
         Cursor.SetCursor(knifeCursor, Vector2.zero, CursorMode.Auto);
         lumberCount = 150;
-        foodCount = 800;
+        foodCount = 50;
         coinCount = 100;
         workerCount = 0;
         lastTimeActive = Time.time;
@@ -92,15 +93,17 @@ public class GameManager : MonoBehaviour
     }
     private void death(House t)
     {
-        t.workers--;
-        workerCount--;
-        workerEmployed--;
         GameObject[] array = GameObject.FindGameObjectsWithTag("Workplace");
         GameObject elem = array[Random.Range(0, array.Length)];
         Building w = elem.GetComponent<Building>();
+        t.workers--;
+        if (t.workers < 0) { t.workers = 0; }
+        workerCount--;
+        if (workerCount < 0) { workerCount = 0; }
         w.workers--;
-        if (workerCount < 0) workerCount = 0;
-        if (t.workers < 0) t.workers = 0;
+        if (w.workers < 0) { w.workers = 0; }
+        workerEmployed--;
+        if (workerEmployed < 0) { workerEmployed = 0; }
     }
 
     public void openOptionPanel(Building building)
@@ -124,5 +127,13 @@ public class GameManager : MonoBehaviour
     public bool getEatTime()
     {
         return eating;
+    }
+
+    public void loadScene(int i)
+    {
+        if (i == 0)
+            UnityEngine.Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+        SceneManager.LoadScene(i, LoadSceneMode.Single);
     }
 }
