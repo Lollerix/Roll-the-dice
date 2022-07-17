@@ -74,7 +74,8 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     t.famine = false;
-                    famineCounter--;
+                    if (famineCounter - 1 > -30)
+                        famineCounter--;
                 }
             }
 

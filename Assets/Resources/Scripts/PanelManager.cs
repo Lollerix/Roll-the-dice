@@ -34,6 +34,7 @@ public class PanelManager : MonoBehaviour
         workers = building.workers;
         maxWorkers = building.maxWorkers;
         workerTxt.text = workers.ToString();
+        maxWorkerTxt.text = maxWorkers.ToString();
         for (int i = 0; i < workers; i++)
         {
             dice[i].Restart();
@@ -51,23 +52,20 @@ public class PanelManager : MonoBehaviour
     }
     public void Update()
     {
-        if (this.building != null && this.building.buildingName.Equals("House"))
+        workers = building.workers;
+        maxWorkers = building.maxWorkers;
+        workerTxt.text = workers.ToString();
+        maxWorkerTxt.text = maxWorkers.ToString();
+        int i = 0;
+        for (; i < workers; i++)
         {
-            workers = building.workers;
-            maxWorkers = building.maxWorkers;
-            workerTxt.text = workers.ToString();
-            int i = 0;
-            for (; i < workers; i++)
-            {
-                if (!dice[i].play)
-                    dice[i].Restart();
-            }
-            for (; i < maxWorkers; i++)
-            {
-                if (dice[i].play)
-                    dice[i].Stop();
-            }
-
+            if (!dice[i].play)
+                dice[i].Restart();
+        }
+        for (; i < maxWorkers; i++)
+        {
+            if (dice[i].play)
+                dice[i].Stop();
         }
         if (wm == null)
         {
@@ -86,6 +84,7 @@ public class PanelManager : MonoBehaviour
         if (workers + 1 > maxWorkers) { return; } //Error message
         workers++;
         building.workers++;
+        gm.workerEmployed++;
         workerTxt.text = workers.ToString();
         dice[workers - 1].Restart();
         minRangeTxt.text = (workers * dieBase).ToString();
@@ -96,6 +95,7 @@ public class PanelManager : MonoBehaviour
         if (workers - 1 < 0) return;
         workers--;
         building.workers--;
+        gm.workerEmployed--;
         dice[workers].Stop();
         workerTxt.text = workers.ToString();
         minRangeTxt.text = (workers * dieBase).ToString();
