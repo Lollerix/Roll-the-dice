@@ -10,6 +10,8 @@ public class Cultists : Building
     // Start is called before the first frame update
     void Start()
     {
+        maxWorkers = 5;
+        workers = 0;
         ItemCostClass item = utilityScript.findCost("Cult");
         lumberCost = item.lumberCost;
         coinCost = item.moneyCost;
@@ -22,7 +24,7 @@ public class Cultists : Building
         {
             manned = true;
             workManager.IncreaseDie(1);
-            Debug.Log(workManager.getDieMax());
+            Debug.Log("Die increased by " + workManager.getDieMax());
         }
         if (workers == 0 && manned)
         {

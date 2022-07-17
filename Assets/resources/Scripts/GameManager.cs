@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int coinCount = 0;
     private int foodReq = 2;
     [SerializeField] private int famineCounter = 0;
+    private int famineTreshold = 50;
     float productionTime = 1.3f;
     float lastTimeActive;
     private bool productionActivated = false;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         lumberCount = 50;
         foodCount = 100;
         coinCount = 100;
-        workerCount = 3;
+        workerCount = 0;
         lastTimeActive = Time.time;
     }
 
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         {
             lastTimeActive = Time.time;
             productionActivated = true;
-            //calculateFood();
+            calculateFood();
         }
         else
         {
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
                 if (foodCount < 0)
                 {
                     famineCounter++;
-                    if (famineCounter > 10)
+                    if (famineCounter > famineTreshold)
                     {
                         t.famine = true;
                         t.workers--;

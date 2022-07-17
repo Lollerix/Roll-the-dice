@@ -6,9 +6,9 @@ using UnityEngine;
 public class WorkManager : MonoBehaviour
 {
     //Variabile per le facce che compongono il dado
-    private int dieMax = 1;
+    [SerializeField] private int dieMax = 1;
     //Variabile per il numero minimo da aggiungere al dado
-    private int baseMax = 1;
+    [SerializeField] private int baseMax = 1;
 
     public int getDieMax()
     {

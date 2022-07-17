@@ -18,7 +18,7 @@ public class GridController : MonoBehaviour
     [HideInInspector] public Building buildingTile = null;
     public Tile openTerrain;
 
-    private bool isBuildingActive = false;
+    [SerializeField] private bool isBuildingActive = false;
 
     private Vector3Int previousMousePos = new Vector3Int();
 
