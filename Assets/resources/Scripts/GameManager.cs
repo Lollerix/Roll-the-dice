@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        lumberCount = 50;
-        foodCount = 100;
+        lumberCount = 150;
+        foodCount = 800;
         coinCount = 100;
         workerCount = 0;
         lastTimeActive = Time.time;
@@ -43,6 +43,18 @@ public class GameManager : MonoBehaviour
             lastTimeActive = Time.time;
             productionActivated = true;
             calculateFood();
+            if (lumberCount > 999)
+            {
+                lumberCount = 999;
+            }
+            if (foodCount > 999)
+            {
+                foodCount = 999;
+            }
+            if (coinCount > 999)
+            {
+                coinCount = 999;
+            }
         }
         else
         {
@@ -65,20 +77,31 @@ public class GameManager : MonoBehaviour
                     if (famineCounter > famineTreshold)
                     {
                         t.famine = true;
-                        t.workers--;
-                        workerCount--;
-                        if (workerCount < 0) workerCount = 0;
-                        if (t.workers < 0) t.workers = 0;
+                        death(t);
                     }
                 }
                 else
                 {
                     t.famine = false;
                     famineCounter--;
+                    if (famineCounter < workerCount * -10)
+                        famineCounter = workerCount * -10;
                 }
             }
 
         }
+    }
+    private void death(House t)
+    {
+        t.workers--;
+        workerCount--;
+        workerEmployed--;
+        GameObject[] array = GameObject.FindGameObjectsWithTag("Workplace");
+        GameObject elem = array[Random.Range(0, array.Length)];
+        Building w = elem.GetComponent<Building>();
+        w.workers--;
+        if (workerCount < 0) workerCount = 0;
+        if (t.workers < 0) t.workers = 0;
     }
 
     public void openOptionPanel(Building building)

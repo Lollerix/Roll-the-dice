@@ -4,14 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Smith
-  - Lumber
   - House
+  - Workplace
   - Farm
-  - Cult
-  - Fortress
-  - Dock
-  - Text
   layers:
   - Default
   - TransparentFX
