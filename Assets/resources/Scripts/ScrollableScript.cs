@@ -32,8 +32,8 @@ public class ScrollableScript : MonoBehaviour
         addButton("Blacksmith");
         addButton("Farm");
         addButton("House");
-        addButton("Lumber");
-        addButton("Cult");
+        addButton("Lumber Camp");
+        addButton("Dice Temple");
 #endif
 
 
@@ -48,7 +48,7 @@ public class ScrollableScript : MonoBehaviour
                 gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Blacksmith", typeof(GameObject));
                 break;
 
-            case "Lumber":
+            case "Lumber Camp":
                 gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/LumberCamp", typeof(GameObject));
                 break;
 
@@ -60,7 +60,7 @@ public class ScrollableScript : MonoBehaviour
                 gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/House", typeof(GameObject));
                 break;
 
-            case "Cult":
+            case "Dice Temple":
                 gridControllerScript.buildingObject = (GameObject)Resources.Load("Prefabs/Cultists", typeof(GameObject));
                 break;
 
@@ -81,16 +81,16 @@ public class ScrollableScript : MonoBehaviour
             case "Blacksmith":
                 button = (Button)Resources.Load("Prefabs/Buttons/Blacksmith", typeof(Button)); break;
 
-            case "Lumber":
-                button = (Button)Resources.Load("Prefabs/Buttons/Lumber", typeof(Button)); break;
+            case "Lumber Camp":
+                button = (Button)Resources.Load("Prefabs/Buttons/Lumber Camp", typeof(Button)); break;
 
             case "Farm":
                 button = (Button)Resources.Load("Prefabs/Buttons/Farm", typeof(Button)); break;
             case "House":
                 button = (Button)Resources.Load("Prefabs/Buttons/House", typeof(Button)); break;
 
-            case "Cult":
-                button = (Button)Resources.Load("Prefabs/Buttons/Cult", typeof(Button)); break;
+            case "Dice Temple":
+                button = (Button)Resources.Load("Prefabs/Buttons/Dice Temple", typeof(Button)); break;
 
             default:
                 gridControllerScript.TestCall("Sono in default");

@@ -70,10 +70,13 @@ public class GridController : MonoBehaviour
         {
             gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
-        if (buildingTile.lumberCost <= gm.lumberCount && buildingTile.coinCost <= gm.coinCount)
+        int lumberCost = UtilsScript.findCost(buildingTile.buildingName).lumberCost;
+        int moneyCost = UtilsScript.findCost(buildingTile.buildingName).moneyCost;
+        Debug.Log("Costi letti " + buildingTile.buildingName + ": " + lumberCost + " " + moneyCost);
+        if (lumberCost <= gm.lumberCount && moneyCost <= gm.coinCount)
         {
-            gm.lumberCount -= UtilsScript.findCost(buildingTile.buildingName).lumberCost;
-            gm.coinCount -= UtilsScript.findCost(buildingTile.buildingName).moneyCost;
+            gm.lumberCount -= lumberCost;
+            gm.coinCount -= moneyCost;
             buildings.SetTile(grid.WorldToCell(mousePos), buildingTile.displayImage);
             GameObject obj = Instantiate(buildingObject, mousePos + new Vector3(0.08f, 0.08f, -1), transform.rotation);
         }

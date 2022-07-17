@@ -4,14 +4,14 @@ using UnityEngine;
 public class CostOfBuildings : MonoBehaviour
 {
     public List<ItemCostClass> itemCostsList = new List<ItemCostClass>
-    { 
-                new ItemCostClass("Blacksmith",80,80),
-                new ItemCostClass("Cult",300,500),
-                new ItemCostClass("Dock",100,100),
-                new ItemCostClass("Farm",20,60),
-                new ItemCostClass("House",30,80),
-                new ItemCostClass("Lumber",10,10)
-                
+    {
+                new ItemCostClass("Blacksmith",70,50),
+                new ItemCostClass("Dice Temple",50,70),
+                new ItemCostClass("Dock",300,500),
+                new ItemCostClass("Farm",20,20),
+                new ItemCostClass("House",10,10),
+                new ItemCostClass("Lumber Camp",30,30)
+
     };
 
     void Start()

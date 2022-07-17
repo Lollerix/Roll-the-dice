@@ -23,6 +23,10 @@ public class Farm : Building
             {
                 int food = Working();
                 mainManager.foodCount += food;
+                if (mainManager.foodCount > 999)
+                {
+                    mainManager.foodCount = 999;
+                }
             }
         }
     }

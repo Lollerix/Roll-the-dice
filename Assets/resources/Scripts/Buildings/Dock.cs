@@ -22,6 +22,10 @@ public class Dock : Building
             {
                 int coin = Working();
                 mainManager.coinCount += coin;
+                if (mainManager.coinCount > 999)
+                {
+                    mainManager.coinCount = 999;
+                }
             }
         }
     }

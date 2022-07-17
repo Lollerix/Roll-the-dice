@@ -23,6 +23,11 @@ public class LumberCamp : Building
             {
                 int lumber = Working();
                 mainManager.lumberCount += lumber;
+
+                if (mainManager.lumberCount > 999)
+                {
+                    mainManager.lumberCount = 999;
+                }
             }
         }
     }
