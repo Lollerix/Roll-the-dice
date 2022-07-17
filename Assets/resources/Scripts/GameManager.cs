@@ -107,6 +107,10 @@ public class GameManager : MonoBehaviour
     {
 
         if (optionsObj.activeSelf) closeOptionPanel(optionsObj);
+        AudioSource x = gameObject.GetComponent<AudioSource>();
+        x.clip = building.buildingSound;
+        if (x.isPlaying) x.Stop();
+        x.Play();
         PanelManager options = optionsObj.GetComponent<PanelManager>();
         options.Initialize(building);
         optionsObj.SetActive(true);

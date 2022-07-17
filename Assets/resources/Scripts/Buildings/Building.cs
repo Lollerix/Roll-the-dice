@@ -13,6 +13,7 @@ public class Building : MonoBehaviour
     public int maxWorkers;
     public int workers;
     public string buildingName;
+    public AudioClip buildingSound;
     bool mouseOver = false;
     Vector3 mousePos;
 
